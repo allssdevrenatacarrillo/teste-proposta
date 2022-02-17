@@ -16,9 +16,7 @@
     ],
     'depends': [
         'sale',
-        'base',
         'web',
-        'product',
         'sale_management'
     ],
     'data': [
