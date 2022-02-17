@@ -72,13 +72,13 @@
             <!-- <div class="header header_allss last-page"> -->
 
             <div class="header header_allss">
-                <div class="row" style="border-bottom: 2px solid #3a8e60;">
-                    <div class="col-sm col-9">
+                <!-- <div class="row" style="border-bottom: 2px solid #3a8e60;">
+                    <div class="col-sm col-9"> -->
                         <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
                         <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
-                        <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
-                    </div>
-                    <div class="col-sm col-3" style="padding:0px!important;">
+                        <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
+                    </div> -->
+                    <div class="col-sm col-12" style="padding:0px!important;">
                         <div class="logo" style="border-left:2px solid #3a8e60;">
                             <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="176"/>
                         </div>
