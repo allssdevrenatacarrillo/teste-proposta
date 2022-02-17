@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
+            <field name="name">ALLSS - Propostas de Vendas</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">32</field>
+            <field name="margin_left">15</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report id="action_allss_custom_sale_order"
+                model="sale.order"
+                report_type="qweb-pdf"
+                file="kv_quotation_templates.allss_custom_sale_order"
+                name="kv_quotation_templates.allss_custom_sale_order"
+                string="ALLSS - Propostas de Vendas"/>
+
+        <record id="action_allss_custom_sale_order" model="ir.actions.report">
+            <field name="name">ALLSS - Propostas de Vendas</field>
+            <field name="paperformat_id" ref="paperformat_allss_custom_sale_order"/>
+            <field name="print_report_name">"proposta-%s-%s.pdf" % (object.name, object.partner_id.name)</field>
+        </record>
+    </data>
+
+    <!-- <template id="allss_custom_sale_order">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="kv_quotation_templates.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template> -->
+
+    <template id="allss_assets_fonts" name="Assets Fonts for Sale Order" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link href="/kv_quotation_templates/static/src/scss/style.scss" rel="stylesheet" type="text/scss"/>
+        </xpath>
+    </template>
+
+
+    <!-- Substituição da call padrão do Odoo pela call da cotação customizada da KV -->
+    <template id="allss_custom_sale_order" inherit_id="sale.report_saleorder">
+        <xpath expr="/t/t/t" position="replace">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="kv_quotation_templates.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
+            </t>    
+        </xpath>
+    </template>
+    <!-- 
+    <template id="assets_fonts" name="Assets Fonts" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link href="/kv_quotation_templates/static/src/scss/style.scss" rel="stylesheet" type="text/scss"/>
+        </xpath>
+    </template>
+    -->
+
+    <template id="allss_report_sale_order">
+        <t t-call="web.basic_layout">
+            <t t-set="content" t-value="doc.sale_order_template_id.body_html"/>
+            <t t-set="body_html" t-value="doc.render_html(content)"/>
+            <t t-set="date_order" t-value="doc.date_order"/>
+
+            <!-- <div class="header header_allss not-first-page"> -->
+            <!-- <div class="header header_allss not-last-page"> -->
+            <!-- <div class="header header_allss first-page"> -->
+            <!-- <div class="header header_allss last-page"> -->
+
+            <div class="header header_allss">
+                <div class="row" style="border-bottom: 2px solid #3a8e60;">
+                    <div class="col-sm col-9">
+                        <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
+                        <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
+                        <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
+                    </div>
+                    <div class="col-sm col-3" style="padding:0px!important;">
+                        <div class="logo" style="border-left:2px solid #3a8e60;">
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="176"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="line_h"></div> -->
+            </div>
+
+            <div class="page">
+                <div class="content_allss">
+                    <div t-raw="body_html"></div>
+                </div>
+            </div>
+            <!-- <div class="line_v"></div> -->
+            <!-- <div class="footer footer_allss">
+                TESTE TESTE TESTE
+            </div> -->
+        </t>
+    </template>
+</odoo>
+
+        <!-- <t t-call="web.basic_layout">
+            <t t-set="content" t-value="doc.sale_order_template_id.body_html"/>
+            <t t-set="body_html" t-value="doc.render_html(content)"/>
+
+            <div class="header header_allss" t-att-style="report_header_style">
+                <div class="logo">
+                    <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="180"/>
+                </div>
+                <div class="seq_date_header">
+                    <span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.create_date"></span></span>
+                </div>
+                <div class="line_h"></div> -->
+                <!-- <div class="line_v"></div> -->
+                <!-- <t t-raw="0"/> -->
+                <!-- <div>
+            </div>
+
+            <div class="page">
+                <div class="content_allss">
+                    <div t-raw="body_html"></div>
+                </div>
+            </div>
+
+            <div class="footer footer_allss">
+                TESTE TESTE TESTE
+            </div>
+        </t> -->
+    <!-- </template> -->
+                    <!-- <section class="page_report">
+                    <div class="seq_date_header">
+                        <span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.create_date"></span></span>
+                    </div>
+                    <div class="logo">
+                        <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="180"/>
+                    </div>
+                    <div class="line_h"></div>
+                    <div class="line_v"></div>
+                    <section class="content">
+                        <div class="seq_date">
+                            <p>Proposta <p t-field="doc.name"></p></p>
+                            <p t-field="doc.create_date"></p>
+                        </div>
+                        <div class="title_1">
+                            <p>À</p>
+                            <p>ORGANIZAÇÃO</p>
+                            <p>A/C</p>
+                            <p>SOLICITANTE (CONTATO OPORTUNIDADE)</p>
+                        </div>
+                        <div class="title_2">
+                            <p>PROPOSTA TÉCNICA E COMERCIAL DE PRESTAÇÃO DE SERVIÇOS DE ARQUITETURA</p>
+                        </div>
+                        <div class="texts">
+                            <div> 
+                                <p><b>A - OBJETO</b></p>
+                                <br/>
+                                <p>O objeto desta proposta é o desenvolvimento de Projeto Completo de Arquitetura 
+                                para empreendimento de uso predominante residencial em terreno de {{{object.name}}}, 
+                                situado na Avenida Ipanema, Barueri/SP, com área total construída estimada de 16.400 m²</p>
+                                <t t-set="body_html" t-value="doc.render_html(doc.sale_order_template_id.body_html)"/>
+                                <p t-raw="body_html"></p>
+                            </div>
+                            <div>
+                                <p><b>B - ESCOPO DE SERVIÇOS (ANEXO I)</b></p> 
+                                <br/>
+                                <p><b>1 - Definição de produtos</b></p>
+                                <p>1.1 Estudo de viabilidade;</p>
+                                <p>1.2 Estudo preliminar.</p>
+                                <br/>
+                                <p><b>2 - Aprovações Legais</b></p>
+                                <p>2.1 Documentação gráfica para aprovações legais;</p>
+                                <p>2.2 Atendimento gráfico de eventuais “Comunique-se”;</p>
+                                <p>2.3 Documentação gráfica para Registro de Incorporação em Cartório.</p>
+                                <br/>
+                                <p><b>3 - Desenvolvimento do Projeto Arquitetônico</b></p>
+                                <p>3.1 Anteprojeto;</p>
+                                <p>3.2 Projeto pré-executivo;</p>
+                                <p>3.3 Projeto executivo;</p>
+                                <p>3.4 Projeto executivo liberado para obra;</p>
+                                <p>3.5 Modelagem 3D no software Archicad com entregas nos padrões IFC, BIMx, DWG e PDF.</p>
+                                <br/>
+                                <p>Observação: O nível de detalhamento do IFC é o necessário e suficiente para visualização, 
+                                documentação e simulações, excluindo quantitativos para orçamentos de obra, planejamento e 
+                                manutenção.</p>
+                                <br/>
+                                <p><b>4 - Assessoria à comercialização</b></p>
+                                <p><![CDATA[&emsp;]]>4.1 - Aprovação de produção de maquetes / perspectivas ou maquetes eletrônicas;</p>
+                                <p><![CDATA[&emsp;]]>4.2 - Aprovação de produção de material gráfico de vendas;</p>
+                                <p><![CDATA[&emsp;]]>4.3 Plantas de contrato com opções de planta; 4.4 Mini executivo de apartamento decorado;</p>
+                                <p><![CDATA[&emsp;]]>4.5 Relatórios de análise do material de vendas fornecido pelo cliente.</p>
+                            </div>  
+                        </div>
+                    </section>
+                </section>
+
+                <section class="page_report">
+                    <div class="seq_date_header">
+                        <span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.create_date"></span></span>
+                    </div>
+                    <div class="logo">
+                        <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="180"/>
+                    </div>
+                    <div class="line_h"></div>
+                    <div class="line_v"></div>
+                    <section class="content">
+                        <div>
+                            <p><b>C - ÁREAS DE REFERÊNCIA</b></p>
+                            <br/>
+                            <p>Para efeito desta proposta considera-se a área legal total construída 
+                            estimada de 16.400 m². Esta área será retificada na aprovação do Projeto 
+                            Legal, ocasião em que se procederão aos ajustes dos honorários, caso a 
+                            variação exceda 3% (três por cento) da área.</p>
+                        </div>
+                        <div>
+                            <p>D.2 - Condições de Pagamento</p>
+                            <table class="table_D">
+                                <tr>
+                                    <div class="table_title">
+                                        PRECIFICAÇÃO DOS PRODUTOS DO PROJETO DE ARQUITETURA
+                                    </div>
+                                </tr>
+                                <tr class="line_titles">
+                                    <td>Evento</td>
+                                    <td>Produto</td>
+                                    <td>Proporção</td>
+                                    <td>Valor</td>
+                                </tr>
+                                <t t-foreach="doc.order_line" t-as="line">
+                                    <t t-set="proportion" t-value="'%.2f'%(line.price_subtotal / doc.amount_total * 100)"/>
+                                    <tr class="lines">
+                                        <td t-esc="line.name"></td>
+                                        <td t-esc="line.product_template_id.name"></td>
+                                        <td><span t-esc="proportion"></span>%</td>
+                                        <td t-esc="line.price_subtotal"></td>
+                                    </tr>
+                                </t>
+                            </table>
+                        </div>
+                        <div>
+                            <p><b>E - REAJUSTE</b></p>
+                            <br/>
+                            <p>Após 12 meses da emissão da proposta, o valor será reajustado mensalmente 
+                            de acordo com o INCC - Índice Nacional da Construção Civil (FGV). A data base 
+                            adotada para cálculo é a data da emissão desta proposta, sendo o reajuste 
+                            calculado a partir da variação acumulada de INCC entre a data base e o último 
+                            índice divulgado até a data do respectivo faturamento.</p>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="page_report">
+                    <div class="seq_date_header">
+                        <span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.create_date"></span></span>
+                    </div>
+                    <div class="logo">
+                        <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="180"/>
+                    </div>
+                    <div class="line_h"></div>
+                    <div class="line_v"></div>
+                    <section class="content">
+                        <div>
+                            <p><b>F - PRAZOS</b></p> 
+                            <br/>
+                            <p>Conforme cronograma a ser acordado entre as partes em até 15 (quinze) 
+                            dias após o aceite da proposta.</p>
+                        </div>
+                        <div>
+                            <p><b>G - SERVIÇOS FORA DE ESCOPO</b></p> 
+                            <br/>
+                            <p>G.1 Trabalhos relativos ao atendimento de mudanças de projeto que gerem 
+                            impacto sobre serviços já entregues serão remunerados, quando não mensuráveis 
+                            por área, conforme a Tabela G.1 a seguir:</p>
+                            <br/>
+
+                            <table class="table_hono">
+                                <tr>
+                                    <div class="table_title">
+                                        TABELA G.1: HONORÁRIOS POR HORA TÉCNICA
+                                    </div>
+                                </tr>
+                                <tr class="line_titles">
+                                    <td>Cargo / Função</td>
+                                    <td>Valor / Hora</td>
+                                </tr>
+                                <tr class="line_el">
+                                    <td>Diretor de Design/ Projetos</td>
+                                    <td>390,00</td>
+                                </tr>
+                                <tr class="line_el">
+                                    <td>Gerente de Técnico</td>
+                                    <td>263,00</td>
+                                </tr>
+                                <tr class="line_el">
+                                    <td>Arquiteto Sênior</td>
+                                    <td>201,00</td>
+                                </tr>
+                                <tr class="line_el">
+                                    <td>Arquiteto Pleno</td>
+                                    <td>141,00</td>
+                                </tr>
+                                <tr class="line_el">
+                                    <td>Arquiteto Junior</td>
+                                    <td>103,00</td>
+                                </tr>
+                                <tr class="line_el">
+                                    <td>Estagiário Universitário</td>
+                                    <td>50,00</td>
+                                </tr>
+                            </table>
+
+                            <br/>
+                            <p>G.2 Não se incluem no escopo dos serviços as despesas de hospedagem, 
+                            transporte aéreo e terrestre fora da Grande São Paulo, que serão pagas à 
+                            Contratada através de reembolsos em 20 DDL (vinte dias de liquidação);</p>
+                            <br/>
+                            <p>G.3 Os trabalhos e/ou despesas relacionadas nos itens G.1 e G.2 deverão 
+                            ser solicitados formalmente e autorizados previamente pela Contratante.</p>
+                        </div>
+                        <div>
+                            <p><b>H - OBSERVAÇÕES</b></p>
+                            <br/> 
+                            <p>H.1 Etapas autorizadas iniciadas, quando interrompidas por iniciativa da 
+                            Contratante deverão ser remuneradas integralmente até a data limite de seus 
+                            prazos previstos de pagamento. Em caso de retomada dos serviços não haverá 
+                            remuneração complementar até a entrega da referida etapa;</p>
+                            <br/>
+                            <p>H.2 A autorização da ordem de serviço para elaboração da Documentação gráfica
+                             para aprovações legais implica no aceite e respectiva medição do Estudo Preliminar_R00.</p>
+                             <br/>
+                            <p>H.3 A RRT será emitida na ocasião do protocolo do Projeto Legal, ocasião 
+                            na qual, impreterivelmente, deverá estar formalizado o Contrato e com as medições 
+                            já realizadas, faturadas e quitadas.</p>
+                            <br/>
+                            <p>H.4 No caso de encerramento unilateral do contrato, será devido a título de 
+                            multa indenizatória por desmobilização de recursos o montante de 10% do saldo 
+                            em aberto do contrato descontados os valores do item H.1, limitado a 5% do valor 
+                            global do contrato.</p>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="page_report">
+                    <div class="seq_date_header">
+                        <span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.create_date"></span></span>
+                    </div>
+                    <div class="logo">
+                        <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="180"/>
+                    </div>
+                    <div class="line_h"></div>
+                    <div class="line_v"></div>
+                    <section class="content">
+                        <div>
+                            <p><b>I - OBRIGAÇÕES DA CONTRATADA</b></p> 
+                            <br/>
+                            <p>I.1 Fornecer toda mão de obra necessária à execução dos serviços, excluindo 
+                            os de responsabilidade da Contratante ou de terceiros contratados;</p>
+                            <br/>
+                            <p>I.2 Executar todos os trabalhos previstos no contrato atendendo as posturas 
+                            técnicas e legais pertinentes à atividade profissional regulamentada de arquitetura
+                             e urbanismo pelo CAU (Conselho de Arquitetura e Urbanismo);</p>
+                            <br/>
+                            <p>I.3 Observar e cumprir os cronogramas de desenvolvimento dos trabalhos pactuados
+                             entre a Contratante, os projetistas e consultores complementares e a Contratada;</p> 
+                            <br/>
+                            <p>I.4 Assumir todos os encargos previdenciários, fiscais e trabalhistas decorrentes dos serviços</p>
+                        </div>
+                        <div>
+                            <p><b>J - OBRIGAÇÕES DA CONTRATANTE</b></p> 
+                            <br/>
+                            <p>J.1 Fornecer antecipadamente a cada etapa de trabalho todos os subsídios, 
+                            definições e informações necessárias e suficientes para o desenvolvimento técnico 
+                            dos trabalhos, bem como o cumprimento dos prazos a serem acordados entre as partes;</p>
+                            <p>J.2 Solicitar e aprovar formalmente todas as fases e etapas de trabalho;</p>
+                            <p>J.3 Efetuar o pagamento dos honorários e das despesas a seu cargo em até 20 
+                            DDL (vinte dias de liquidação);</p>
+                            <p>J.4 Não ceder, não transferir, não dividir, não negociar, total ou parcialmente 
+                            o projeto, bem como seus direitos e obrigações sem o consentimento prévio e formal 
+                            da Contratada;</p>
+                            <p>J.5 Consultar a Contratada sobre qualquer alteração de seus projetos em 
+                            qualquer etapa de seu desenvolvimento;</p>
+                            <p>J.6 Permitir a instalação de placa da Contratada e mantê-la exposta durante 
+                            toda a execução, conforme regulamentação do CAU, art. 14 da Lei 12.378 de 31 de 
+                            dezembro de 2010, identificando a Contratada como responsável pelo projeto de arquitetura;</p>
+                            <p>J.7 Incluir o logotipo fornecido pela Contratada nos principais materiais 
+                            publicitários do empreendimento, sempre que o formato e mídia permitirem 
+                            (folhetos, anúncios, books, stand de vendas, canteiro de obra, etc), na 
+                            proporção horizontal mínima de 75% dos demais logotipos que compõe o anúncio, 
+                            identificando a Contratada como responsável e autora do projeto de arquitetura;</p>
+                            <p>J.8 Contratar as equipes técnicas de projetos complementares de Engenharia e 
+                            consultorias especializadas em acordo com as características do projeto;</p>
+                            <p>J.9 Contratar consultorias específicas para atender integralmente às Normas 
+                            de Desempenho, no que tange a: conforto térmico, lumínico, acústico, e os 
+                            demais que se fizerem necessário e que não estão no escopo do projeto de Arquitetura.</p>
+                            <p>J.10 Fornecer à Contratada cópias autenticadas de ARTs e/ou RRTs de 
+                            todos os profissionais e/ou empresas envolvidas com os projetos, quando aplicável.</p>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="page_report">
+                    <div class="seq_date_header">
+                        <span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.create_date"></span></span>
+                    </div>
+                    <div class="logo">
+                        <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="180"/>
+                    </div>
+                    <div class="line_h"></div>
+                    <div class="line_v"></div>
+                    <section class="content">
+                        <div>
+                            <p><b>K - ASPECTOS GERAIS</b></p> 
+                            <p>K.1 Não se incluem no escopo dos serviços e atividades propostas, projetos de 
+                            interiores, decoração, design de mobiliário, paisagismo, gerenciamento, 
+                            impermeabilização, projetos técnicos complementares e/ou consultorias 
+                            especificas, levantamentos técnicos e/ou de dados da situação existente 
+                            de implantações e edificações, digitalização de desenhos existentes, 
+                            plantas humanizadas, memoriais quantitativos, visitas e vistorias à obra, 
+                            despesas com taxas, impostos e emolumentos junto a órgãos públicos, 
+                            materiais gráficos ou digitais de apresentação, material de placas ou 
+                            divulgação, cópias e plotagens, reproduções, despesas de remessas, 
+                            postagens e serviços de malote, e outros não mencionados nesta proposta;</p>
+                            <p>K.2 Não se incluem no escopo de serviços da Contratada responsabilidades 
+                            técnicas ou cíveis decorrentes de qualquer natureza sobre o conteúdo 
+                            técnico dos projetos complementares envolvidos de estrita 
+                            responsabilidade de seus autores;</p>
+                            <p>K.3 O Preço contempla todos os tributos incidentes sobre os Serviços. 
+                            Entretanto, em caso de majoração da carga tributária incidente sobre 
+                            os Serviços após a assinatura do presente instrumento, seja em função 
+                            da criação de novos tributos incidentes, seja em função da majoração 
+                            de alíquota, alteração da base de cálculo ou de qualquer outro elemento 
+                            que compõe a regra matriz de incidência de tributos municipais, estaduais 
+                            ou federais cujo fato gerador corresponda à consecução do objeto deste 
+                            instrumento, o Preço será devidamente reajustado mediante aditamento 
+                            ao Contrato, de modo a garantir a manutenção de seu equilíbrio 
+                            econômico-financeiro.</p>
+                            <p>K.4 A autoria do projeto para efeito de aprovações legais não implica 
+                            em responsabilidade técnica efetiva em caso de desenvolvimento parcial 
+                            projeto, de modificações não autorizadas do mesmo, ou de supressão ou 
+                            inclusão de elementos e sistemas alheios à concepção e detalhamento originais;</p>
+                            <p>K.5 A responsabilidade técnica da Contratada cessa para todos os 
+                            efeitos automaticamente em caso de modificações, alterações ou 
+                            reespecificações em obra não aprovadas pelos autores do projeto e 
+                            não compatibilizada por eles;</p>
+                            <p>K.6 Os direitos autorais e patrimoniais do projeto são de propriedade 
+                            da Contratada, e serão cedidos ao Contratante para uso único, 
+                            exclusivo e determinado conforme o escopo dos serviços contratados, 
+                            após a conclusão integral do escopo dos serviços e quitação integral 
+                            do contrato pelo Contratante, em acordo com a Lei de Direito Autoral 
+                            (Lei 9.610/98) e a Lei do CAU (Lei 12.378/10);</p>
+                            <p>K.7 Todas as ilustrações, imagens e perspectivas são apenas para 
+                            uso interno e aprovação de conceito, não sendo permitido, sem o prévio 
+                            consentimento da Contratada, a utilização para qualquer material 
+                            publicitário, anúncios, redes sociais, books, e stand de vendas. 
+                            Caso a Contratante deseje utilizar para outras finalidades, deverá 
+                            licenciar o direito autoral e patrimonial das respectivas ilustrações;</p>
+                            <p>K.8 Esta proposta tem validade de 30 dias</p>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="page_report">
+                    <div class="seq_date_header">
+                        <span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.create_date"></span></span>
+                    </div>
+                    <div class="logo">
+                        <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="180"/>
+                    </div>
+                    <div class="line_h"></div>
+                    <div class="line_v"></div>
+                    <section class="content">
+                        <div>
+                            <p style="width: 100%; text-align: center;"><b>ANEXO I – ESCOPO DOS SERVIÇOS</b></p>
+                            <p style="width: 100%; text-align: center;"><b>PROJETO COMPLETO DE ARQUITETURA</b></p>
+                            <p><b>1 - Definição de produtos</b></p>
+                            <br/>
+                            <p><![CDATA[&emsp;]]>1.1 Estudo de Viabilidade</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.1.1 Análise e equacionamento de legislação urbana e restrições;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.1.2 Conceituação mercadológica do conjunto edificado;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.1.3 Formatação de áreas privativas, brutas locáveis, equivalentes, 
+                            parciais por produtos e totais de construção;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.1.4 Estudo de massa:</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.1.4.1- Implantação;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.1.4.2- Imagem conceitual - volumes /fotos referências;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.1.4.3- Planta tipo referência.</p>
+
+                            <p><![CDATA[&emsp;]]>1.2 Estudo preliminar:</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.2.1 Planta tipo / duplex (quando houver);</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.2.2 Planta térreo / implantação;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.2.3 Planta de subsolos ou sobressolos;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.2.4 Corte esquemático;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>1.2.5 Volumetria 3D - com materiais de acabamento proposto.</p>
+                        </div>
+                        <div>
+                            <p>2 - Aprovações Legais</p>
+                            <p><![CDATA[&emsp;]]>2.1 Documentação gráfica para aprovações legais – esfera municipal:</p>
+                            <p><![CDATA[&emsp;&emsp;]]>2.1.1- Planta simplificada do tipo / duplex (quando houver);</p>
+                            <p><![CDATA[&emsp;&emsp;]]>2.1.2- Planta simplificada do térreo / implantação;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>2.1.3- Planta simplificada de subsolos ou sobressolos;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>2.1.4- Planta simplificada do ático - barrilete/ casa de máquinas/ cobertura;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>2.1.5- Cortes esquemáticos;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>2.1.6- Memórias de cálculo de todos os pavimentos/ memória de jardins e permeáveis.</p>
+                            <p><![CDATA[&emsp;]]>2.2 Atendimento gráfico de eventuais “Comunique-se”;</p>
+                            <p><![CDATA[&emsp;]]>2.3 Documentação gráfica para Registro de Incorporação em Cartório.</p>
+                            <br/>
+                            <p><b><u>Exclusões:</u></b> Aprovações em outros órgãos que exijam consultorias, peças gráficas e 
+                            documentos específicos, Projetos para aprovações em Concessionárias e Corpo de 
+                            Bombeiros (que deverão ser elaborados por empresas específicas a serem contratadas).</p>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="page_report">
+                    <div class="seq_date_header">
+                        <span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.create_date"></span></span>
+                    </div>
+                    <div class="logo">
+                        <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="180"/>
+                    </div>
+                    <div class="line_h"></div>
+                    <div class="line_v"></div>
+                    <section class="content">
+                        <div>
+                            <p><b>3 - Desenvolvimento do Projeto Arquitetônico</b></p>
+                            <p><![CDATA[&emsp;]]>3.1 Anteprojeto</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.1.1- Planta tipo;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.1.2- Planta térreo / implantação;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.1.3- Planta de subsolos ou sobressolos;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.1.4- Planta ático - barrilete/ casa de máquinas/ cobertura;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.1.5- Cortes gerais (2);</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.1.6- Cortes parciais que se fizerem necessário;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.1.7- Elevações (4) e elevações de possíveis anexos;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.1.8- Caderno de Esquadrias de Alumínio somente do pavimento tipo (portas, caixilhos) *.</p>
+                                <br/>
+                                <p>*Desenhos são esquemáticos e o projeto para execução deve ser desenvolvido por projetista 
+                                especifico ou fornecedor e aprovado pelo arquiteto.</p>
+                                <br/>
+                            <p><![CDATA[&emsp;]]>3.2 Projeto pré-executivo:</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.1- Planta tipo / duplex (quando houver);</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.2- Planta térreo / implantação;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.3- Planta de subsolos ou sobressolos;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.4- Planta ático - barrilete/ casa de máquinas/ cobertura;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.5- Cortes gerais;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.6- Cortes parciais que se fizerem necessário;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.7- Elevações e elevações de possíveis anexos;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.8- Caderno de Esquadrias de Alumínio (portas, caixilhos)*;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.9- Caderno de Ferro (portas, caixilhos e gradis)*;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.10- Caderno de Esquadrias de Madeira*;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.11- Caderno de guarda-corpo*;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.12- Caderno de portas PCF*;</p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.2.13- Caderno de Bancadas.</p>
+                                <br/>
+                                <p>*Desenhos são esquemáticos e o projeto para execução deve ser desenvolvido por 
+                                projetista especifico ou fornecedor e aprovado pelo arquiteto.</p>
+                                <br/>
+                            <p><![CDATA[&emsp;]]>3.3 Projeto executivo: </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.1- Planta tipo / duplex (quando houver); </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.2- Planta térreo / implantação; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.3- Planta de subsolos ou sobressolos; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.4- Planta ático - barrilete/ casa de máquinas/ cobertura; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.5- Cortes gerais; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.6- Cortes parciais que se fizerem necessário; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.7- Elevações e elevações de possíveis anexos; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.8- Caderno de Esquadrias de Alumínio (portas, caixilhos)*;</p> 
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.9- Caderno de Ferro (portas, caixilhos e gradis)*; </p>
+                        </div>
+                    </section>
+                </section>
+
+                <section class="page_report">
+                    <div class="seq_date_header">
+                        <span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.create_date"></span></span>
+                    </div>
+                    <div class="logo">
+                        <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="180"/>
+                    </div>
+                    <div class="line_h"></div>
+                    <div class="line_v"></div>
+                    <section class="content">
+                        <div>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.10- Caderno de Esquadrias de Madeira*; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.11- Caderno de guarda-corpo*; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.12- Caderno de portas PCF*;  </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.13- Caderno de Bancadas; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.14- Detalhamento de Soleiras; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.15- Detalhamentos Construtivos; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.3.16- Detalhamento de áreas molhadas - limitadas a 2 elevações. </p>
+                                <br/>
+                                <p>*Desenhos são esquemáticos e o projeto para execução deve ser desenvolvido por projetista especifico 
+                                ou fornecedor e aprovado pelo arquiteto.</p> 
+                                <br/>
+                                <p>Para as opções de plantas serão entregues duas (02) variantes para ampliações e duas (02) para 
+                                atendimentos legais quando necessário (planta de unidade adaptável e acessível).</p>
+                                <br/>
+                            <p><![CDATA[&emsp;]]>3.4 Projeto liberado para obra </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.4.1- Alteração de carimbos de todos os entregáveis no projeto executivo; </p>
+                            <p><![CDATA[&emsp;&emsp;]]>3.4.2- Apresentação para obra - compilando plantas, cortes, fachadas e detalhes 
+                                    mais notáveis para boa compreensão do projeto, com a finalidade de apresentar ao 
+                                    Engenheiro Responsável pela execução da obra e sua equipe. </p>
+                            <p><![CDATA[&emsp;]]>3.5 Modelagem 3D no software Archicad com entregas nos padrões IFC, BIMx, DWG e PDF.</p> 
+                                <br/>
+                                <p>Observação: O nível de detalhamento do IFC é o necessário e suficiente para visualização, documentação 
+                                e simulações, excluindo quantitativos para orçamentos de obra, planejamento e manutenção.</p> 
+                                <br/>
+                                <p><b><u>Exclusões do desenvolvimento de arquitetura:</u></b> Paginações de pisos (incluso no escopo somente 
+                                paginações das áreas molhadas no caderno especifico acima listado), plantas de forro (incluso 
+                                no escopo somente a indicação de ambientes com forro e respectiva altura nas plantas gerais), 
+                                Memorial Descritivo (incluso no escopo indicação de tipos de acabamentos/revestimentos 
+                                nas plantas e elevações), Memorial de Incorporação, Calculo de Áreas da NB para Incorporação, 
+                                Caderno de encargos e Planilhas quantitativas dos serviços a serem executados, <i>as Built.</i></p>
+                            <p><b>4 - Assessoria à comercialização</b></p>
+                            <p><![CDATA[&emsp;]]>4.1 - Aprovação de produção de maquetes / perspectivas ou maquetes eletrônicas;</p>
+                            <p><![CDATA[&emsp;]]>4.2 - Aprovação de produção de material gráfico de vendas;</p>
+                            <p><![CDATA[&emsp;]]>4.3 Plantas de contrato com opções de planta;</p>
+                            <p><![CDATA[&emsp;]]>4.4 Mini executivo de apartamento decorado;</p>
+                            <p><![CDATA[&emsp;]]>4.5 Relatórios de análise do material de vendas fornecido pelo cliente.</p>
+                            <br/>
+                            <p>Observação: As Plantas de Contrato, constantes no item 4.3, são simplificadas para cada unidade 
+                            habitacional tipo, não serão feitas para todas as unidades habitacionais do empreendimento nem 
+                            por andar. As demais Plantas de Contrato que se fizerem necessárias serão cobradas adicionalmente 
+                            através de SSE específica. Para as opções de plantas serão entregues duas (02) variantes para 
+                            ampliações e duas (02) para atendimentos legais quando necessário (planta de unidade adaptável e acessível)</p>
+                        </div>
+                    </section>
+                </section> -->
+        <!-- </t>
+    </template>
+</odoo> -->
