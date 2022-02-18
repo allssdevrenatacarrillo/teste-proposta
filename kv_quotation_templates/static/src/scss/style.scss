@@ -1,5 +1,19 @@
 .header{
-    height:140px !important;
+    // height:140px !important;
+    height: 100%;
+}
+
+.page:before{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(fundo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 .header_allss{ 
     // background-color: #ccc;

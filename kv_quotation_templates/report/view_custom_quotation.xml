@@ -92,6 +92,22 @@
                     <div t-raw="body_html"></div>
                 </div>
             </div>
+
+            <div class="footer">
+                <div class="row">
+                    <div class="col-sm col-9">
+                        <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
+                        <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
+                        <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div> -->
+                    </div>
+                    <div class="col-sm col-12" style="padding:0px!important;">
+                        <div class="logo">
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footer}" width="176"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="line_h"></div> -->
+            </div>
             <!-- <div class="line_v"></div> -->
             <!-- <div class="footer footer_allss">
                 TESTE TESTE TESTE
