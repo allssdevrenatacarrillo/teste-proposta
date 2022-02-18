@@ -100,7 +100,7 @@
                 <div class="row">
                     <div class="col-sm col-9">
                         <div class="logo">
-                            <img  t-attf-src="data:fundo.png" width="176"/>
+                            <img t-attf-src="data:image/png;base64,#{doc.sale_ordert_emplate_id.logo}" width="176"/>
                         </div>
                     </div>
                     <div class="col-sm col-3" style="padding:0px!important;">
