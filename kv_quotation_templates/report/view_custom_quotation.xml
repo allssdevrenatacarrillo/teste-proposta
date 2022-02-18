@@ -79,8 +79,8 @@
                         <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
                     </div>
                     <div class="col-sm col-3" style="padding:0px!important;">
-                        <div class="logo" style="border-left:2px solid #3a8e60;">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="176"/>
+                        <div class="logo" style="border-left:2px solid #3a8e60;opacity:0,5;">
+                            <img  t-attf-src="#{doc.sale_order_template_id.logo}data:image/png;base64," width="176"/>
                         </div>
                     </div>
                 </div>
@@ -90,6 +90,9 @@
             <div class="page">
                 <div class="content_allss">
                     <div t-raw="body_html"></div>
+                        <div class="watermark" style="position:absolute;opacity:0,5;font-size:3em;height:100%;width:100%;text-align:center;z-index:1000;right350px;border:0;">
+                            <img t-attf-src="#{doc.sale_order_template_id.logo}data:image/png;base64,"/>
+                        </div>
                 </div>
             </div>
             <!-- <div class="line_v"></div> -->
