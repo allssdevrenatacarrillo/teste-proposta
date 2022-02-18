@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-sm col-12" style="padding:0px!important;">
                         <div class="logo">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="500"/>
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="176"/>
                         </div>
                     </div>
                 </div>

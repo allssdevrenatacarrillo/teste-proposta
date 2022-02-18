@@ -7,8 +7,8 @@ class SaleOrderTmlCustom(models.Model):
     _inherit = 'sale.order.template'
 
     logo = fields.Binary('Logo')
-    header = fields.Binary('Logo')
-    footer = fields.Binary('Logo')
+    header = fields.Binary('Header')
+    footer = fields.Binary('Footer')
     body_html = fields.Html('Conteúdo da Proposta')
     contract_html = fields.Html('Conteúdo do Contrato')
 
