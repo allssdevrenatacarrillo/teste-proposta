@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-sm col-3" style="padding:0px!important;">
                         <div class="logo" style="">
-                            <img  t-attf-src="#{doc.sale_order_template_id.logo}data:image/png;base64," width="176"/>
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_ordert_emplate_id.logo}" width="176"/>
                         </div>
                     </div>
                 </div>
@@ -99,13 +99,11 @@
             <div class="footer">
                 <div class="row">
                     <div class="col-sm col-9">
-                        <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
-                        <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
+                        <div class="logo">
+                            <img  t-attf-src="data:fundo.png" width="176"/>
+                        </div>
                     </div>
                     <div class="col-sm col-3" style="padding:0px!important;">
-                        <div class="logo">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="176"/>
-                        </div>
                     </div>
                 </div>
                 <!-- <div class="line_h"></div> -->
