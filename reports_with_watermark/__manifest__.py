@@ -15,7 +15,7 @@
     'license': 'AGPL-3',
     'category': 'Extra Tools',
     'version': '14.0.1.0.0',
-    'depends': ['web', 'sale_management', 'purchase'],
+    'depends': ['web', 'sale_management', 'purchase', 'sale', 'base', 'product'],
     'data': [
         'views/res_company_views.xml',
         'report/external_layout_template.xml',
