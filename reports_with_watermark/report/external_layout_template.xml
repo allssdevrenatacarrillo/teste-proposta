@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+        <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
+            <field name="name">ALLSS - Propostas de Vendas</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
     <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
-                <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.50;">
+                <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
                     <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
                 </div>
 
