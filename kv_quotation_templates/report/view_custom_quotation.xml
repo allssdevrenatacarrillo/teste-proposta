@@ -82,6 +82,9 @@
                         <div class="logo">
                             <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="176"/>
                         </div>
+                    <div class="watermark" style="position:absolute;opacity:0,5;font-size:3em;height:100%;width:100%;text-align:left;z-index:1000;right350px;border:0;">
+                        <img t-att-src="'data:image/png;base64,%s' % to_text(doc.company_id.folha)"/>
+                    </div>
                     </div>
                 </div>
                 <!-- <div class="line_h"></div> -->

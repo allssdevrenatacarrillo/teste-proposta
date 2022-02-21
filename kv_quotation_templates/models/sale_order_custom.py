@@ -9,6 +9,7 @@ class SaleOrderTmlCustom(models.Model):
     logo = fields.Binary('Logo')
     header = fields.Binary('Header')
     footer = fields.Binary('Footer')
+    folha = fields.Binary('Folha')
     body_html = fields.Html('Conteúdo da Proposta')
     contract_html = fields.Html('Conteúdo do Contrato')
 
