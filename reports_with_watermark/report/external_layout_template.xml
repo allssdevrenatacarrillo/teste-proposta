@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-<t id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
+<template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
+    <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="row">
                 <div class="col-3 mb4" style="text-align:right">
@@ -49,7 +50,8 @@
                 </div>
             </div>
         </div>
-    </t>
+    </xpath>
+</template>
 
         <!-- <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
             <field name="name">ALLSS - Propostas de Vendas</field>
