@@ -8,10 +8,9 @@
             <xpath expr="//page[@name='confirmation']" position="after">
                 <page string="Design" name="design">
                     <group string="Imagens">
-                        <field name="logo" widget="image" style="width: 40%"/>
-                        <field name="header" widget="image" style="width: 40%"/>
-                        <field name="footer" widget="image" style="width: 40%"/>
-                        <field name="folha" widget="image" style="width: 40%"/>
+                        <!-- <field name="logo" widget="image" style="width: 40%"/> -->
+                        <field name="header" widget="image" style="width: 100%"/>
+                        <field name="footer" widget="image" style="width: 100%"/>
                     </group>
                     <group string="Textos">
                         <field name="body_html"/>

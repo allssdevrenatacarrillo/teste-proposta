@@ -70,6 +70,9 @@
             <!-- <div class="header header_allss not-last-page"> -->
             <!-- <div class="header header_allss first-page"> -->
             <!-- <div class="header header_allss last-page"> -->
+                    <div class="watermark" style="position:absolute;opacity:0,5;font-size:3em;height:100%;width:100%;text-align:left;z-index:1000;right350px;border:0;">
+                        <img t-att-src="'data:image/png;base64,%s' % to_text(doc.company_id.header)"/>
+                    </div>
 
             <div class="header">
                 <div class="row">
@@ -80,11 +83,8 @@
                     </div>
                     <div class="col-sm col-12" style="padding:0px!important;">
                         <div class="logo">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="176"/>
+                            <!-- <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="176"/> -->
                         </div>
-                    <div class="watermark" style="position:absolute;opacity:0,5;font-size:3em;height:100%;width:100%;text-align:left;z-index:1000;right350px;border:0;">
-                        <img t-att-src="'data:image/png;base64,%s' % to_text(doc.company_id.folha)"/>
-                    </div>
                     </div>
                 </div>
                 <!-- <div class="line_h"></div> -->
@@ -105,7 +105,7 @@
                     </div>
                     <div class="col-sm col-12" style="padding:0px!important;">
                         <div class="logo">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footer}" width="176"/>
+                            <!-- <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footer}" width="176"/> -->
                         </div>
                     </div>
                 </div>
