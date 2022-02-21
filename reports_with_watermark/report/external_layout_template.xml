@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-<template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
+<t id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="row">
                 <div class="col-3 mb4" style="text-align:right">
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-    </template>
+    </t>
 
         <!-- <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
             <field name="name">ALLSS - Propostas de Vendas</field>
