@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+<t t-name="web.external_layout_standard">
+        <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+            <div class="row">
+                <div class="col-3 mb4" style="text-align:right">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
+                </div>
+                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
+            </div>
+            <div t-if="company.logo or company.report_header" class="row zero_min_height">
+                <div class="col-12">
+                    <div style="border-bottom: 1px solid black;"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6" name="company_address">
+                    <div t-field="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                </div>
+            </div>
+        </div>
+
+        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+            <div class="pt-5">
+                <!-- This div ensures that the address is not cropped by the header. -->
+                <t t-call="web.address_layout"/>
+            </div>
+            <t t-raw="0"/>
+        </div>
+
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4">
+                    <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
+                         adding d-inline class fixes the problem-->
+                    <li t-if="company.phone" class="list-inline-item d-inline"><span class="o_force_ltr" t-field="company.phone"/></li>
+                    <li t-if="company.email" class="list-inline-item d-inline"><span t-field="company.email"/></li>
+                    <li t-if="company.website" class="list-inline-item d-inline"><span t-field="company.website"/></li>
+                    <li t-if="company.vat" class="list-inline-item d-inline"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                </ul>
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
+    </t>
+
         <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
             <field name="name">ALLSS - Propostas de Vendas</field>
             <field name="default" eval="True" />
@@ -29,36 +79,11 @@
         </record>
     </data>
 
-    <!-- <template id="allss_custom_sale_order">
-        <t t-call="web.basic_layout">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="reports_with_watermark.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
-            </t>
-        </t>
-    </template> -->
-
     <template id="allss_assets_fonts" name="Assets Fonts for Sale Order" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
             <link href="/reports_with_watermark/static/src/scss/style.scss" rel="stylesheet" type="text/scss"/>
         </xpath>
     </template>
-
-
-    <!-- Substituição da call padrão do Odoo pela call da cotação customizada da KV -->
-    <!-- <template id="allss_custom_sale_order" inherit_id="sale.report_saleorder">
-        <xpath expr="/t/t/t" position="replace">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="reports_with_watermark.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
-            </t>    
-        </xpath>
-    </template> -->
-    <!-- 
-    <template id="assets_fonts" name="Assets Fonts" inherit_id="web.report_assets_common">
-        <xpath expr="." position="inside">
-            <link href="/kv_quotation_templates/static/src/scss/style.scss" rel="stylesheet" type="text/scss"/>
-        </xpath>
-    </template>
-    -->
 
     <template id="allss_report_sale_order">
         <t t-call="web.basic_layout">
@@ -66,23 +91,13 @@
             <t t-set="body_html" t-value="doc.render_html(content)"/>
             <t t-set="date_order" t-value="doc.date_order"/>
 
-            <!-- <div class="header header_allss not-first-page"> -->
-            <!-- <div class="header header_allss not-last-page"> -->
-            <!-- <div class="header header_allss first-page"> -->
-            <!-- <div class="header header_allss last-page"> -->
-
             <div class="header header_allss">
                 <div class="row" style="">
-                    <!-- <div class="col-sm col-9"> -->
-                        <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
-                        <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
-                        <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div> -->
-                    <!-- </div> -->
-                    <!-- <div class="col-sm" style="">
+                    <div class="col-sm" style="">
                         <div class="logo" style="">
                             <img t-attf-src="data:image/png;base64,#{company.logo}" width=""/>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
 
@@ -96,7 +111,7 @@
 
     <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
-                <div class="header" style="opacity: 0.25;">
+                <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
                     <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
                 </div>
 
