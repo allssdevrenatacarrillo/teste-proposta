@@ -18,8 +18,8 @@
         <report id="action_allss_custom_sale_order"
                 model="sale.order"
                 report_type="qweb-pdf"
-                file="kv_quotation_templates.allss_custom_sale_order"
-                name="kv_quotation_templates.allss_custom_sale_order"
+                file="reports_with_watermark.allss_custom_sale_order"
+                name="reports_with_watermark.allss_custom_sale_order"
                 string="ALLSS - Propostas de Vendas"/>
 
         <record id="action_allss_custom_sale_order" model="ir.actions.report">
@@ -98,6 +98,7 @@
             </div> -->
         </t>
     </template>
+
     <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
                 <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
