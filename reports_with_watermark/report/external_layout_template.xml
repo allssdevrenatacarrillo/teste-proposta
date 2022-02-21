@@ -1,56 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <data>
         <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
             <field name="name">ALLSS - Propostas de Vendas</field>
             <field name="default" eval="True" />
             <field name="format">A4</field>
             <field name="orientation">Portrait</field>
             <field name="margin_top">40</field>
-            <field name="margin_bottom">0</field>
-            <field name="margin_left">-10</field>
-            <field name="margin_right">0</field>
+            <field name="margin_bottom">32</field>
+            <field name="margin_left">15</field>
+            <field name="margin_right">5</field>
             <field name="header_line" eval="False" />
             <field name="header_spacing">35</field>
             <field name="dpi">90</field>
         </record>
-    <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
-        <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
-                <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
-                    <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
-                </div>
 
-                <div t-if ="company.watermark_option == 'logo'" style="opacity: 0.50;">
-                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="top:400px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
-                </div>
+        <report id="action_allss_custom_sale_order"
+                model="sale.order"
+                report_type="qweb-pdf"
+                file="kv_quotation_templates.allss_custom_sale_order"
+                name="kv_quotation_templates.allss_custom_sale_order"
+                string="ALLSS - Propostas de Vendas"/>
 
-                <div t-if = "company.watermark_option == 'name'">
-                    <t t-if="company.rotate_image == True and not company.font_size and not company.font_color">
-                        <span t-field="company.name" t-att-style="'transform:rotate(' + company.rotate_angle + ' deg); -webkit-transform:rotate(' + company.rotate_angle + 'deg); top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
-                    </t>
-                    <t t-if="company.rotate_image == True and company.font_size and not company.font_color">
-                        <span t-field="company.name" t-att-style="'transform:rotate(' + company.rotate_angle + ' deg); -webkit-transform:rotate(' + company.rotate_angle + 'deg);font-size:'+ company.font_size + 'px;top:500px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
-                    </t>
-                    <t t-if="company.rotate_image == True and company.font_color and not company.font_size">
-                        <span t-field="company.name" t-att-style="'transform:rotate(' + company.rotate_angle + ' deg); -webkit-transform:rotate(' + company.rotate_angle + 'deg);color: '+ company.font_color +'; top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
-                    </t>
-                    <t t-if="company.rotate_image == True and company.font_size and company.font_color">
-                        <span t-field="company.name" t-att-style="'transform:rotate(' + company.rotate_angle + ' deg); -webkit-transform:rotate(' + company.rotate_angle + 'deg);font-size: '+ company.font_size + 'px; color: '+ company.font_color +';top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
-                    </t>
+        <record id="action_allss_custom_sale_order" model="ir.actions.report">
+            <field name="name">ALLSS - Propostas de Vendas</field>
+            <field name="paperformat_id" ref="paperformat_allss_custom_sale_order"/>
+            <field name="print_report_name">"proposta-%s-%s.pdf" % (object.name, object.partner_id.name)</field>
+        </record>
+    </data>
 
-                    <t t-if="company.rotate_image == False">
-                        <t t-if="company.font_size and not company.font_color">
-                            <span t-field="company.name" t-att-style="'font-size:' + company.font_size + 'px;''top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
-                        </t>
-                        <t t-if="company.font_color and not company.font_size">
-                            <span t-field="company.name" t-att-style="'color:' + company.font_color + ';' 'top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
-                        </t>
-                        <t t-if="company.font_size and company.font_color">
-                            <span t-field="company.name" t-att-style="'font-size:' + company.font_size + 'px;' 'color:' + company.font_color + ';' 'top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
-                        </t>
-                    </t>
-                </div>
+    <!-- <template id="allss_custom_sale_order">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="kv_quotation_templates.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template> -->
+
+    <template id="allss_assets_fonts" name="Assets Fonts for Sale Order" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link href="/kv_quotation_templates/static/src/scss/style.scss" rel="stylesheet" type="text/scss"/>
         </xpath>
     </template>
+
+
+    <!-- Substituição da call padrão do Odoo pela call da cotação customizada da KV -->
+    <template id="allss_custom_sale_order" inherit_id="sale.report_saleorder">
+        <xpath expr="/t/t/t" position="replace">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="kv_quotation_templates.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
+            </t>    
+        </xpath>
+    </template>
+    <!-- 
+    <template id="assets_fonts" name="Assets Fonts" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link href="/kv_quotation_templates/static/src/scss/style.scss" rel="stylesheet" type="text/scss"/>
+        </xpath>
+    </template>
+    -->
 
     <template id="allss_report_sale_order">
         <t t-call="web.basic_layout">
@@ -89,5 +97,43 @@
                 TESTE TESTE TESTE
             </div> -->
         </t>
+    </template>
+    <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
+                <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
+                    <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
+                </div>
+
+                <div t-if ="company.watermark_option == 'logo'" style="opacity: 0.50;">
+                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="top:400px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
+                </div>
+
+                <div t-if = "company.watermark_option == 'name'">
+                    <t t-if="company.rotate_image == True and not company.font_size and not company.font_color">
+                        <span t-field="company.name" t-att-style="'transform:rotate(' + company.rotate_angle + ' deg); -webkit-transform:rotate(' + company.rotate_angle + 'deg); top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
+                    </t>
+                    <t t-if="company.rotate_image == True and company.font_size and not company.font_color">
+                        <span t-field="company.name" t-att-style="'transform:rotate(' + company.rotate_angle + ' deg); -webkit-transform:rotate(' + company.rotate_angle + 'deg);font-size:'+ company.font_size + 'px;top:500px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
+                    </t>
+                    <t t-if="company.rotate_image == True and company.font_color and not company.font_size">
+                        <span t-field="company.name" t-att-style="'transform:rotate(' + company.rotate_angle + ' deg); -webkit-transform:rotate(' + company.rotate_angle + 'deg);color: '+ company.font_color +'; top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
+                    </t>
+                    <t t-if="company.rotate_image == True and company.font_size and company.font_color">
+                        <span t-field="company.name" t-att-style="'transform:rotate(' + company.rotate_angle + ' deg); -webkit-transform:rotate(' + company.rotate_angle + 'deg);font-size: '+ company.font_size + 'px; color: '+ company.font_color +';top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
+                    </t>
+
+                    <t t-if="company.rotate_image == False">
+                        <t t-if="company.font_size and not company.font_color">
+                            <span t-field="company.name" t-att-style="'font-size:' + company.font_size + 'px;''top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
+                        </t>
+                        <t t-if="company.font_color and not company.font_size">
+                            <span t-field="company.name" t-att-style="'color:' + company.font_color + ';' 'top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
+                        </t>
+                        <t t-if="company.font_size and company.font_color">
+                            <span t-field="company.name" t-att-style="'font-size:' + company.font_size + 'px;' 'color:' + company.font_color + ';' 'top:400px;position:absolute;text-align:center;width:100%;absolute;opacity:0.25;'"/>
+                        </t>
+                    </t>
+                </div>
+        </xpath>
     </template>
 </odoo>
