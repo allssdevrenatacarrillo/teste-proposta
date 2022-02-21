@@ -51,7 +51,7 @@
         </div>
     </t>
 
-        <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
+        <!-- <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
             <field name="name">ALLSS - Propostas de Vendas</field>
             <field name="default" eval="True" />
             <field name="format">A4</field>
@@ -107,7 +107,7 @@
                 </div>
             </div>
         </t>
-    </template>
+    </template> -->
 
     <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
