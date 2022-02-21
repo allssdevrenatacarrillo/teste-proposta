@@ -17,6 +17,7 @@ class ResCompany(models.Model):
                                  attachment=True,
                                  help="This field holds the image used for" +
                                  "the badge, limited to 256x256")
+    header = fields.Binary('Header')
     rotate_image = fields.Boolean(string='Rotate')
     watermark = fields.Boolean(string='Watermark')
     watermark_option = fields.Selection([
