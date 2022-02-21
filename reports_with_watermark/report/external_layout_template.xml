@@ -4,13 +4,14 @@
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="row">
                 <div class="col-3 mb4" style="text-align:right">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
+                    <img t-if="company.upload_image" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
                 </div>
                 <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
             </div>
             <div t-if="company.logo or company.report_header" class="row zero_min_height">
                 <div class="col-12">
                     <div style="border-bottom: 1px solid black;"/>
+                    <p>ALLLLOU</p>
                 </div>
             </div>
             <div class="row">
