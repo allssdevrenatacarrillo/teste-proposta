@@ -80,7 +80,7 @@
                     <!-- </div> -->
                     <div class="col-sm" style="">
                         <div class="logo" style="">
-                            <img  t-attf-src="data:image/png;base64,#{company.upload_image}" width=""/>
+                            <img  t-attf-src="data:image/png;base64,#{doc.company.upload_image}" width=""/>
                         </div>
                     </div>
                 </div>
