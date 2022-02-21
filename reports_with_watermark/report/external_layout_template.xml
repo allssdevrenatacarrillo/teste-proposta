@@ -79,9 +79,9 @@
                         <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div> -->
                     <!-- </div> -->
                     <div class="col-sm" style="">
-                        <div class="logo" style="">
-                            <img t-attf-src="data:image/png;base64,#{doc.res_company.header}" width=""/>
-                        </div>
+                <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
+                    <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
+                </div>
                     </div>
                 </div>
                 <!-- <div class="line_h"></div> -->
@@ -101,9 +101,9 @@
 
     <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
-                <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
+                <!-- <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
                     <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
-                </div>
+                </div> -->
 
                 <div t-if ="company.watermark_option == 'logo'" style="opacity: 0.50;">
                     <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % to_text(company.logo)" style="top:400px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
