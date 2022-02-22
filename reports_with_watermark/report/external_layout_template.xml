@@ -75,12 +75,12 @@
             </div>
 
             <div class="page">
-                <div class="content_allss" style="padding-top:30px;">
+                <div class="content_allss" style="padding-top:50px;padding-bottom:50px;">
                     <div t-raw="body_html"></div>
                 </div>
             </div>
 
-            <div class="footer" style="height:140px!important;">
+            <div class="footer" style="height:140px;">
                 <div class="row">
                 <div class="col-sm col-4" style="padding:0px!important;border-top:2px solid #3a8e60;">
                     <div class="logo" style="text-align:left;opacity: 0.15;margin-left:-15px;">
