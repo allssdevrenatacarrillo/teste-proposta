@@ -46,15 +46,15 @@
             <t t-set="body_html" t-value="doc.render_html(content)"/>
             <t t-set="date_order" t-value="doc.date_order"/>
 
-            <div class="header" style="height:50px;width:100%;">
-                <div class="row" style="">
+            <div class="header header_allss">
+                <div class="row">
                     <div class="col-sm col-9">
                         <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
                         <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
                         <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
                     </div>
                     <div class="col-sm col-3" style="padding:0px!important;">
-                        <div class="logo" style="border-left:2px solid #3a8e60;">
+                        <div class="logo">
                             <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width=""/>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="col-sm col-4" style="">
-                    <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-15px;padding-bottom:-50px;">
+                    <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-15px;padding-bottom:100px;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width=""/>
                     </div>
                 </div>
