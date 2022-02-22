@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
-    <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="replace">
+    <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="after">
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="row">
                 <div class="col-3 mb4" style="text-align:right">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 45px;" alt="Logo"/>
+                    <img t-if="company.upload_image" t-att-src="image_data_uri(company.upload_image)" style="max-height: 45px;" alt="Logo"/>
                     <p>ALLLLOU</p>
                 </div>
                 <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
