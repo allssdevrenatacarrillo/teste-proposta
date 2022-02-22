@@ -20,9 +20,9 @@
                     <!-- <div class="col-sm col-9">
                         <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
                     </div> -->
-                    <div class="col-sm col-3" style="padding:0px!important;">
-                        <div class="logo" style="border-left:2px solid #3a8e60;">
-                            <img  t-attf-src="image_data_uri(company.upload_image)" width="176"/>
+                    <div class="col-sm col-12" style="padding:0px!important;">
+                        <div class="logo" style="">
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width=""/>
                         </div>
                     </div>
                 </div>
