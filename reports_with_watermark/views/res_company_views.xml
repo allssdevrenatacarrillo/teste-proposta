@@ -27,6 +27,9 @@
                 <page string="Design" name="design">
                     <group string="Imagens">
                         <field name="logo" widget="image" style="width: 40%"/>
+                        <field name="header" widget="image" style="width: 40%"/>
+                        <field name="footerleft" widget="image" style="width: 40%"/>
+                        <field name="footerright" widget="image" style="width: 40%"/>
                     </group>
                     <group string="Textos">
                         <field name="body_html"/>
