@@ -17,7 +17,7 @@
 
 	}
 </style> -->
-        <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
+        <!-- <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
             <field name="name">ALLSS - Propostas de Vendas</field>
             <field name="default" eval="True" />
             <field name="format">A4</field>
@@ -29,7 +29,7 @@
             <field name="header_line" eval="False" />
             <field name="header_spacing">0</field>
             <field name="dpi">90</field>
-        </record>
+        </record> -->
 
     <!-- Substituição da call padrão do Odoo pela call da cotação customizada da KV -->
     <template id="allss_custom_sale_order" inherit_id="sale.report_saleorder">
@@ -47,16 +47,16 @@
             <t t-set="date_order" t-value="doc.date_order"/>
 
             <div class="header header_allss">
-                <div class="row" style="">
+                <!-- <div class="row" style=""> -->
                     <!-- <div class="col-sm col-9">
                         <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
                     </div> -->
                     <div class="col-sm col-12" style="padding:0px!important;">
-                        <div class="watermark" style="text-align:right;opacity: 0.25;">
+                        <div class="watermark" style="text-align:right;opacity: 0.15;">
                             <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width=""/>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             </div>
 
             <div class="page">
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="col-sm col-4" style="padding:0px!important;">
-                    <div class="logo" style="text-align:right;opacity: 0.25;">
+                    <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-5px;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width=""/>
                     </div>
                 </div>
