@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="col-sm col-4" style="padding:0px!important;">
-                    <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-5px;">
+                    <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-15px;margin-bottom:10px;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width=""/>
                     </div>
                 </div>

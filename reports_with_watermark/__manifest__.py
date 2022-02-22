@@ -2,7 +2,7 @@
 # Part of AktivSoftware See LICENSE file for full copyright
 # and licensing details.
 {
-    'name': "Reports with Watermark 1.0",
+    'name': "Proposta Dinâmica ALLSS - Watermark 1.0",
     'summary': """
             Generates reports with watermark as per the image uploaded.
              """,
