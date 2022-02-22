@@ -81,19 +81,19 @@
             </div>
 
             <div class="footer">
-                <div class="row" style="">
-                <div class="col-sm col-4" style="">
+                <div class="row">
+                <div class="col-sm col-4" style="padding:0px!important;">
                     <div class="logo" style="text-align:left;opacity: 0.15;margin-left:-15px;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width=""/>
                     </div>
                 </div>
 
-                <div class="col-sm col-4 text-center" style="padding-bottom:50px;">
+                <div class="col-sm col-4 text-center" style="padding:0px!important;">
                     Page: <span class="page"/> / <span class="topage"/>
                 </div>
 
-                <div class="col-sm col-4" style="">
-                    <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-15px;padding-bottom:100px;">
+                <div class="col-sm col-4" style="padding:0px!important;">
+                    <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-15px;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width=""/>
                     </div>
                 </div>
