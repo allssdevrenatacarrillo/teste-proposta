@@ -60,7 +60,7 @@
             </div>
 
             <div class="page">
-                <div style="padding-top:100px;">
+                <div style="padding-top:5px;">
                     <div t-raw="body_html"></div>
                 </div>
             </div>
