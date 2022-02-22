@@ -1,12 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+<template id="allss_report_sale_order">
+        <t t-call="web.basic_layout">
+            <t t-set="content" t-value="doc.sale_order_template_id.body_html"/>
+            <t t-set="body_html" t-value="doc.render_html(content)"/>
+            <t t-set="date_order" t-value="doc.date_order"/>
+
+            <div class="header header_allss">
+                <div class="row" style="border-bottom: 2px solid #3a8e60;">
+                    <!-- <div class="col-sm col-9">
+                        <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
+                    </div> -->
+                    <div class="col-sm col-3" style="padding:0px!important;">
+                        <div class="logo" style="border-left:2px solid #3a8e60;">
+                            <img  t-attf-src="image_data_uri(company.upload_image)" width="176"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="content_allss">
+                    <div t-raw="body_html"></div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+
+
+
 <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
-    <!-- <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="after"> -->
+    <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="after">
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="row">
                 <div class="col-3 mb4" style="text-align:right">
                     <img t-if="company.upload_image" t-att-src="image_data_uri(company.upload_image)" style="max-height: 45px;" alt="Logo"/>
-                    <p>ALLLLOU</p>
                 </div>
                 <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
             </div>
@@ -46,11 +76,11 @@
                 </div>
 
                 <div t-if="report_type == 'pdf'" class="text-muted">
-                    Page: <span class="page"/> // <span class="topage"/>
+                    Page: <span class="page"/> / <span class="topage"/>
                 </div>
             </div>
         </div>
-    <!-- </xpath> -->
+    </xpath>
 </template>
 
         <!-- <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
