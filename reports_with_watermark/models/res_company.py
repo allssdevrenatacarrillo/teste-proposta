@@ -58,6 +58,9 @@ class SaleOrderTmlCustom(models.Model):
     logo = fields.Binary('Logo')
     body_html = fields.Html('Conteúdo da Proposta')
     contract_html = fields.Html('Conteúdo do Contrato')
+    header = fields.Binary('Header')
+    footerleft = fields.Binary('Footer Left')
+    footerright = fields.Binary('Footer Right')
 
 
 class SaleOrderCustom(models.Model):
