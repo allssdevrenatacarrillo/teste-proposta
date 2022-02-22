@@ -56,7 +56,7 @@
                             <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width=""/>
                         </div>
                     </div>
-                <!-- </div> -->
+                </div>
             </div>
 
             <div class="page">
