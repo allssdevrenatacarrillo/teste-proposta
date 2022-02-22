@@ -46,7 +46,7 @@
             <t t-set="body_html" t-value="doc.render_html(content)"/>
             <t t-set="date_order" t-value="doc.date_order"/>
 
-            <div class="header" style="height:50px;">
+            <div class="header" style="height:50px;width:100%;">
                 <div class="row" style="">
                     <div class="col-sm col-9">
                         <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="page">
-                <div style="padding-top:150px;">
+                <div style="padding-top:100px;">
                     <div t-raw="body_html"></div>
                 </div>
             </div>
