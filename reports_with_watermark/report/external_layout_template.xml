@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <!-- Substituição da call padrão do Odoo pela call da cotação customizada da KV -->
+    <template id="allss_custom_sale_order" inherit_id="sale.report_saleorder">
+        <xpath expr="/t/t/t" position="replace">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="kv_quotation_templates.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
+            </t>    
+        </xpath>
+    </template>
+    
 <template id="allss_report_sale_order">
         <t t-call="web.basic_layout">
             <t t-set="content" t-value="doc.sale_order_template_id.body_html"/>
