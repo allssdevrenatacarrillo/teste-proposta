@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+        <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
+            <field name="name">ALLSS - Propostas de Vendas</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">35</field>
+            <field name="dpi">90</field>
+        </record>
+
     <!-- Substituição da call padrão do Odoo pela call da cotação customizada da KV -->
     <template id="allss_custom_sale_order" inherit_id="sale.report_saleorder">
         <xpath expr="/t/t/t" position="replace">
@@ -21,7 +35,7 @@
                         <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
                     </div> -->
                     <div class="col-sm col-12" style="padding:0px!important;">
-                        <div class="logo" style="text-align:right;opacity: 0.25;margin-right:-50px;">
+                        <div class="logo" style="text-align:right;opacity: 0.25;">
                             <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width=""/>
                         </div>
                     </div>
@@ -33,6 +47,27 @@
                     <div t-raw="body_html"></div>
                 </div>
             </div>
+
+        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+            <div class="text-center" style="border-top: 1px solid black;">
+                <ul class="list-inline mb4">
+                    <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
+                         adding d-inline class fixes the problem-->
+                    <li t-if="company.phone" class="list-inline-item d-inline"><span class="o_force_ltr" t-field="company.phone"/></li>
+                    <li t-if="company.email" class="list-inline-item d-inline"><span t-field="company.email"/></li>
+                    <li t-if="company.website" class="list-inline-item d-inline"><span t-field="company.website"/></li>
+                    <li t-if="company.vat" class="list-inline-item d-inline"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
+                </ul>
+
+                <div name="financial_infos">
+                    <span t-field="company.report_footer"/>
+                </div>
+
+                <div t-if="report_type == 'pdf'" class="text-muted">
+                    Page: <span class="page"/> / <span class="topage"/>
+                </div>
+            </div>
+        </div>
         </t>
     </template>
 
@@ -40,7 +75,7 @@
 
 
 
-<template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
+<!-- <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
     <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="after">
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="row">
@@ -63,7 +98,6 @@
 
         <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
             <div class="pt-5">
-                <!-- This div ensures that the address is not cropped by the header. -->
                 <t t-call="web.address_layout"/>
             </div>
             <t t-raw="0"/>
@@ -72,8 +106,6 @@
         <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
             <div class="text-center" style="border-top: 1px solid black;">
                 <ul class="list-inline mb4">
-                    <!-- using the list-inline-item class from bootstrap causes weird behaviours in pdf report
-                         adding d-inline class fixes the problem-->
                     <li t-if="company.phone" class="list-inline-item d-inline"><span class="o_force_ltr" t-field="company.phone"/></li>
                     <li t-if="company.email" class="list-inline-item d-inline"><span t-field="company.email"/></li>
                     <li t-if="company.website" class="list-inline-item d-inline"><span t-field="company.website"/></li>
@@ -90,7 +122,7 @@
             </div>
         </div>
     </xpath>
-</template>
+</template> -->
 
     <!-- <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
