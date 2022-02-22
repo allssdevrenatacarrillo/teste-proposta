@@ -61,7 +61,7 @@
 
             <div class="header header_allss">
                 <div class="row">
-                    <div class="col-sm col-9">
+                    <div class="col-sm col-9" style="border-bottom:2px solid #3a8e60;">
                         <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
                         <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
                         <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-esc="date_order.strftime('%d/%m/%Y')"></span></span></div>
@@ -75,7 +75,7 @@
             </div>
 
             <div class="page">
-                <div style="content_allss;padding-top:100px;padding-bottom:200px;">
+                <div class="content_allss" style="padding-top:100px;padding-bottom:200px;border-bottom:2px solid #3a8e60;border-top:2px solid #3a8e60;">
                     <div t-raw="body_html"></div>
                 </div>
             </div>
