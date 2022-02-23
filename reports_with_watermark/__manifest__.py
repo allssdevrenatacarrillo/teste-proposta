@@ -1,27 +1,35 @@
 # -*- coding: utf-8 -*-
-# Part of AktivSoftware See LICENSE file for full copyright
-# and licensing details.
 {
-    'name': "Proposta Dinâmica ALLSS - Watermark 1.0",
-    'summary': """
-            Generates reports with watermark as per the image uploaded.
-             """,
-    'description': """
-        The module mainly works with the functionality of ading
-        watermark to all pdf reports in Odoo.
-    """,
-    'author': "Aktiv Software",
-    'website': "http://www.aktivsoftware.com",
-    'license': 'AGPL-3',
-    'category': 'Extra Tools',
+    'name': 'ALLSS - WATERMARK - QUOTATION',
     'version': '14.0.1.0.0',
-    'depends': ['web', 'sale_management', 'purchase', 'sale', 'base', 'product'],
+    'licence':'AGPL-3',
+    'category': 'Sale',
+    'author': 'ALLSS Soluções em Sistemas',
+    'company': 'ALLSS Soluções em Sistemas',
+    'website': 'https://allss.com.br',
+    'summary': 'Dynamic Sale Order Quotation - ALLSS Soluções em Sistemas',
+    'description':'Dynamic Sale Order Quotation - by ALLSS Soluções em Sistemas',
+    'contributors': [
+        'Nathan Oliveira (nathan.oliveira@allss.com.br)',
+        'Anderson Coelho (anderson.coelho@allss.com.br)',
+        'Renata Carrillo (renata.carrillo@allss.com.br)',
+    ],
+    'depends': [
+        'sale',
+        'base',
+        'web',
+        'product',
+        'sale_management'
+    ],
     'data': [
+        #view
         'views/res_company_views.xml',
+
+        #report
         'report/external_layout_template.xml',
     ],
     'images': [
-        'static/description/banner.jpg',
+        'static/description/ALLLSS Soluções em Sistemas.png',
     ],
     'auto_install': False,
     'installable': True,
