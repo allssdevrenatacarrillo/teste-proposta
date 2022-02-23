@@ -24,6 +24,7 @@
     'data': [
         #view
         'views/res_company_views.xml',
+        'views/sale_order_custom.xml',
 
         #report
         'report/external_layout_template.xml',
