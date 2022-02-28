@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </div> -->
-            <div class="footer" style="">
+            <div class="header" style="">
                 <div class="row">
                 <div class="col-sm col-4" style="padding:0px!important;border-top:2px solid #3a8e60;">
                     <div class="logo" style="text-align:left;opacity: 0.15;margin-left:-15px;">
@@ -93,7 +93,7 @@
                     <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
                 </div> -->
 
-            <div class="page" style="margin-top:50px">
+            <div class="page" style="">
                 <div t-raw="body_html"></div>
             </div>
 
