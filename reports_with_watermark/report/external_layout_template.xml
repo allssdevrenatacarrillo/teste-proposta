@@ -80,11 +80,10 @@
                     Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
                     </p> -->
                     </div>
-
+                </div>
                     <p style="position:absolute;z-index:1000;">
                     Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
                     </p>
-                </div>
             </div>
 
             <div class="page" style="">
