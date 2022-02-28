@@ -70,7 +70,7 @@
 
                     <div class="col-sm col-4" style="">
                         <div class="logo" style="">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style="position:absolute;z-index:-1;text-align:right;"/>
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style="position:absolute;z-index:1000"/>
                         </div>
                         <h1>
                         Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
@@ -96,11 +96,11 @@
                     <br></br><span t-field="doc.name"></span>
                 </div>
 
-                <div class="col-sm col-4" style="padding:0px!important;">
+                <!-- <div class="col-sm col-4" style="padding:0px!important;">
                     <div class="logo" style="text-align:right;margin-right:-15px;opacity: 0.50;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width="" style=""/>
                     </div>
-                </div>
+                </div> -->
                 </div>
             </div>
         </t>
