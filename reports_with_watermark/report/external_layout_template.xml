@@ -88,7 +88,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm col-4 text-left" style="padding:0px!important;" style="position:absolute;">
+                <div class="col-sm col-4 text-left" style="padding:0px!important;position:absolute;">
                     Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
                     <br></br><span t-field="doc.name"></span>
                 </div>
