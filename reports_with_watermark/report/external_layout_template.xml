@@ -77,7 +77,7 @@
 <div t-attf-class="header" t-att-style="report_header_style">
             <div class="row">
                 <div class="col-3 mb4" style="text-align:right">
-                    <img t-if="company.upload_image" t-att-src="image_data_uri(company.upload_image)" style="max-height: 45px;" alt="Logo"/>
+                    <img t-if="company.upload_image" t-att-src="data:image/png;base64,#{doc.sale_order_template_id.header}" style="max-height: 45px;" alt="Logo"/>
                 </div>
                 <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
             </div>
