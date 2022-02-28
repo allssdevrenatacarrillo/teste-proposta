@@ -76,7 +76,7 @@
 
             <div class="page">
                 <div>
-                    <div t-raw="body_html" style="margin-top:100px;"></div>
+                    <div t-raw="body_html" style="margin-top:10px;"></div>
                 </div>
             </div>
 
