@@ -89,8 +89,7 @@
                 </div>
 
                 <div class="col-sm col-4 text-center" style="padding:0px!important;">
-                    Page: <span class="page"/> / <span class="topage"/>
-                    <span t-field="doc.partner_id.name"></span>
+                    Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
                     <!-- <br> -->
                     <span t-field="doc.name"></span>
                 </div>
