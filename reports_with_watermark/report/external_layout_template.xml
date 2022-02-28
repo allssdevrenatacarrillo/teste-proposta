@@ -29,13 +29,13 @@
         </record> -->
     </data>
 
-    <!-- <template id="allss_custom_sale_order">
+    <template id="allss_custom_sale_order">
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="reports_with_watermark.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
             </t>
         </t>
-    </template> -->
+    </template>
 
     <template id="allss_assets_fonts" name="Assets Fonts for Sale Order" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
