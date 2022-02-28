@@ -70,6 +70,10 @@
                 </div>
             </div>
 
+                <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
+                    <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
+                </div>
+
             <div class="page">
                 <div class="content_allss" style="">
                     <div t-raw="body_html"></div>
@@ -152,7 +156,7 @@
 </template> -->
 
 <!-- WATERMAERK PÁGINA COMO UM TODO -->
-    <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
+    <!-- <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
                 <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
                     <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
@@ -185,5 +189,5 @@
                     </t>
                 </div>
         </xpath>
-    </template>
+    </template> -->
 </odoo>
