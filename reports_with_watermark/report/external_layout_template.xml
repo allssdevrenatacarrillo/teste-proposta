@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
  <data>
-        <!-- <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
+        <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
             <field name="name">ALLSS - Propostas de Vendas</field>
             <field name="default" eval="True" />
             <field name="format">A4</field>
@@ -13,7 +13,7 @@
             <field name="header_line" eval="False" />
             <field name="header_spacing">50</field>
             <field name="dpi">90</field>
-        </record> -->
+        </record>
 
         <report id="action_allss_custom_sale_order"
                 model="sale.order"
@@ -22,20 +22,20 @@
                 name="reports_with_watermark.allss_custom_sale_order"
                 string="ALLSS - Propostas de Vendas"/>
 
-        <!-- <record id="action_allss_custom_sale_order" model="ir.actions.report">
+        <record id="action_allss_custom_sale_order" model="ir.actions.report">
             <field name="name">ALLSS - Propostas de Vendas</field>
             <field name="paperformat_id" ref="paperformat_allss_custom_sale_order"/>
             <field name="print_report_name">"proposta-%s-%s.pdf" % (object.name, object.partner_id.name)</field>
-        </record> -->
+        </record>
     </data>
 
-    <template id="allss_custom_sale_order">
+    <!-- <template id="allss_custom_sale_order">
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
                 <t t-call="reports_with_watermark.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
             </t>
         </t>
-    </template>
+    </template> -->
 
     <template id="allss_assets_fonts" name="Assets Fonts for Sale Order" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
@@ -60,7 +60,7 @@
             <t t-set="body_html" t-value="doc.render_html(content)"/>
             <t t-set="date_order" t-value="doc.date_order"/>
 
-            <div class="header header_allss">
+            <div class="header">
                 <div class="row">
                     <div class="col-sm col-12" style="border-bottom:2px solid #3a8e60;">
                         <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-15px;">
