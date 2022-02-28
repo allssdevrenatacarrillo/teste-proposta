@@ -66,7 +66,7 @@
                     </div> -->
                     <div class="col-sm col-12" style="border-bottom:2px solid #3a8e60;">
                         <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-1px;">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="50"/>
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="205"/>
                         </div>
                     </div>
                 </div>
