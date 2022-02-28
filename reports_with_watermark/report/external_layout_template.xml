@@ -6,7 +6,7 @@
             <field name="default" eval="True" />
             <field name="format">A4</field>
             <field name="orientation">Portrait</field>
-            <field name="margin_top">40</field>
+            <field name="margin_top">45</field>
             <field name="margin_bottom">35</field>
             <field name="margin_left">0</field>
             <field name="margin_right">0</field>
@@ -66,7 +66,7 @@
                     </div> -->
                     <div class="col-sm col-12" style="">
                         <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-1px;">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width=""/>
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="500"/>
                         </div>
                     </div>
                 </div>
@@ -81,16 +81,16 @@
             <div class="footer" style="">
                 <div class="row">
                 <div class="col-sm col-4" style="padding:0px!important;border-top:2px solid #3a8e60;">
-                    <div class="logo" style="text-align:left;opacity: 0.15;margin-left:-15px;margin-bottom:35px;">
+                    <div class="logo" style="text-align:left;opacity: 0.15;margin-left:-15px;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width=""/>
                     </div>
                 </div>
 
-                <div class="col-sm col-4 text-center" style="">
+                <div class="col-sm col-4 text-center" style="padding:0px!important;">
                     Page: <span class="page"/> / <span class="topage"/>
                 </div>
 
-                <div class="col-sm col-4" style="">
+                <div class="col-sm col-4" style="padding:0px!important;">
                     <div class="logo" style="text-align:right;opacity: 0.15;margin-right:-15px;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width=""/>
                     </div>
