@@ -54,7 +54,6 @@
     </template>
 
 <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
-        <t t-call="web.external_layout_standard">
 <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="replace">
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="row">
@@ -101,7 +100,6 @@
             </div>
         </div>
     </xpath>    
-        </t>
 </template>
 
 <!-- COTAÇÃO DINÂMICA - KV -->
