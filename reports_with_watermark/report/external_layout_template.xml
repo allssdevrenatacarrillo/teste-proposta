@@ -75,9 +75,9 @@
                 </div> -->
 
             <div class="page">
-                <div>
-                    <div t-raw="body_html" style="margin-top:10px;"></div>
-                </div>
+                <!-- <div> -->
+                    <div t-raw="body_html" style="margin-top:30px;"></div>
+                <!-- </div> -->
             </div>
 
             <div class="footer" style="">
