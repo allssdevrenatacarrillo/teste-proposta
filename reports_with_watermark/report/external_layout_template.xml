@@ -83,7 +83,7 @@
              <div class="footer" style="">
                 <div class="row">
                 <div class="col-sm col-4" style="padding:0px!important;border-top:2px solid #3a8e60;">
-                    <div class="logo" style="text-align:left;margin-left:-15px;">
+                    <div class="logo" style="text-align:left;margin-left:-15px;opacity: 0.50;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width=""/>
                     </div>
                 </div>
