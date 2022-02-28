@@ -76,7 +76,7 @@
 
 <div t-attf-class="header" t-att-style="report_header_style">
             <div class="row">
-                <div class="col-3 mb4" style="text-align:right;opacity: 0.15;margin-right:-15px;margin-top:-15px;">
+                <div class="col-3 mb4" style="text-align:right;opacity: 0.15;">
                     <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" style="" alt="Logo"/>
                 </div>
                 <!-- <div class="col-9 text-right" style="margin-top:22px;" name="moto"/> -->
