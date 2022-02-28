@@ -77,20 +77,20 @@
 <div t-attf-class="header" t-att-style="report_header_style">
             <div class="row">
                 <div class="col-3 mb4" style="text-align:right">
-                    <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" style="" alt="Logo"/>
+                    <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" style="205" alt="Logo"/>
                 </div>
-                <div class="col-9 text-right" style="margin-top:22px;" name="moto"/>
+                <!-- <div class="col-9 text-right" style="margin-top:22px;" name="moto"/> -->
             </div>
             <div class="row zero_min_height">
                 <div class="col-12">
                     <div style="border-bottom: 1px solid black;"/>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-6" name="company_address">
                     <div t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
                 </div>
-            </div>
+            </div> -->
         </div>
 
             <div class="page" style="">
