@@ -70,7 +70,7 @@
 
                     <div class="col-sm col-4" style="">
                         <div class="logo" style="text-align:right;">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style="position:absolute;z-index:-1;"/>
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style="position:absolute;z-index:-1;text-align:right;"/>
                         </div>
                         <h1>
                         Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
