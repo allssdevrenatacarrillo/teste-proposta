@@ -69,8 +69,8 @@
                     </div>
                 </div>
             </div> -->
-            <div class="header" style="margin-top:30px;">
-                <div class="row" style="margin-top:30px;">
+            <div class="header" style="margin-bottom:30px;">
+                <div class="row">
                 <div class="col-sm col-6" style="border-top:2px solid #3a8e60;">
                     <div class="logo" style="text-align:left;opacity: 0.15;margin-left:-15px;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width=""/>
@@ -89,7 +89,7 @@
                     <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
                 </div> -->
 
-            <div class="page" style="">
+            <div class="page" style="margin-top:30px;">
                 <div t-raw="body_html"></div>
             </div>
 
