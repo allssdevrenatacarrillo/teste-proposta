@@ -78,7 +78,7 @@
                 <div t-raw="body_html"></div>
             </div>
 
-            <!-- <div class="footer" style="">
+             <div class="footer" style="">
                 <div class="row">
                 <div class="col-sm col-4" style="padding:0px!important;border-top:2px solid #3a8e60;">
                     <div class="logo" style="text-align:left;opacity: 0.15;margin-left:-15px;">
@@ -104,7 +104,7 @@
 
 
 <!-- INHERIT NO HEADER E FOOTER -->
-<template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
+<!-- <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
     <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="after">
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="row">
@@ -151,7 +151,7 @@
             </div>
         </div>
     </xpath>
-</template>
+</template> -->
 
 <!-- WATERMAERK PÁGINA COMO UM TODO -->
     <!-- <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
