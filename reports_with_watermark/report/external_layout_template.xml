@@ -74,7 +74,7 @@
                     <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
                 </div> -->
 
-<div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+<div t-attf-class="header" t-att-style="report_header_style">
             <div class="row">
                 <div class="col-3 mb4" style="text-align:right">
                     <img t-if="company.upload_image" t-att-src="image_data_uri(company.upload_image)" style="max-height: 45px;" alt="Logo"/>
