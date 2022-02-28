@@ -75,7 +75,7 @@
                 </div> -->
 
             <div class="page">
-                <div class="content_allss" style="">
+                <div class="content_allss" style="margin-top:150px;">
                     <div t-raw="body_html"></div>
                 </div>
             </div>
