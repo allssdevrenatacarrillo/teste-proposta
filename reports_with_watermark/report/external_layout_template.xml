@@ -54,7 +54,7 @@
     </template> -->
 
 <!-- COTAÇÃO DINÂMICA - KV -->
-<!-- <template id="allss_report_sale_order">
+<template id="allss_report_sale_order">
         <t t-call="web.basic_layout">
             <t t-set="content" t-value="doc.sale_order_template_id.body_html"/>
             <t t-set="body_html" t-value="doc.render_html(content)"/>
@@ -96,7 +96,7 @@
                 </div>
             </div>
         </t>
-</template> -->
+</template>
 
 
 
