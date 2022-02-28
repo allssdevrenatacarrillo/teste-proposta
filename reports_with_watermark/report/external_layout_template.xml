@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
  <data>
-        <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
+        <!-- <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
             <field name="name">ALLSS - Propostas de Vendas</field>
             <field name="default" eval="True" />
             <field name="format">A4</field>
@@ -13,7 +13,7 @@
             <field name="header_line" eval="False" />
             <field name="header_spacing">50</field>
             <field name="dpi">90</field>
-        </record>
+        </record> -->
 
         <report id="action_allss_custom_sale_order"
                 model="sale.order"
@@ -53,6 +53,7 @@
         </xpath>
     </template>
 
+<!-- COTAÇÃO DINÂMICA - KV -->
 <!-- <template id="allss_report_sale_order">
         <t t-call="web.basic_layout">
             <t t-set="content" t-value="doc.sale_order_template_id.body_html"/>
@@ -100,7 +101,7 @@
 
 
 
-
+<!-- INHERIT NO HEADER E FOOTER -->
 <!-- <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
     <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="after">
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
@@ -150,6 +151,7 @@
     </xpath>
 </template> -->
 
+<!-- WATERMAERK PÁGINA COMO UM TODO -->
     <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
                 <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
