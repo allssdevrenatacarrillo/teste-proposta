@@ -74,7 +74,7 @@
                     <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
                 </div> -->
 
-            <div class="page" style="margin-top:-50px">
+            <div class="page" style="margin-top:50px">
                 <div t-raw="body_html"></div>
             </div>
 
