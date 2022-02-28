@@ -11,7 +11,7 @@
             <field name="margin_left">0</field>
             <field name="margin_right">0</field>
             <field name="header_line" eval="False" />
-            <field name="header_spacing">50</field>
+            <field name="header_spacing">52</field>
             <field name="dpi">90</field>
         </record>
 
@@ -73,7 +73,7 @@
                             <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
                         </div>
                     <p>
-                    Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style="position:absolute;z-index:1000;"></span></b>
+                    Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
                     </p>
                     </div>
                 </div>
