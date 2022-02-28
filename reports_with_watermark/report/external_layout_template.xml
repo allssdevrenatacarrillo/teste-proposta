@@ -70,8 +70,9 @@
 
                     <div class="col-sm col-4" style="">
                         <div class="logo" style="text-align:right;margin-right:-20px;">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style="position:absolute;z-index:1000;"/>
                         </div>
+                        Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
                     </div>
                 </div>
             </div>
@@ -85,7 +86,6 @@
                 <div class="col-sm col-4" style="padding:0px!important;">
                     <div class="logo" style="text-align:left;margin-left:-15px;opacity: 0.50;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width="" style="position:absolute;z-index:1000;"/>
-                        Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
                     </div>
                 </div>
 
