@@ -7,7 +7,7 @@
             <field name="format">A4</field>
             <field name="orientation">Portrait</field>
             <field name="margin_top">45</field>
-            <field name="margin_bottom">41</field>
+            <field name="margin_bottom">35</field>
             <field name="margin_left">0</field>
             <field name="margin_right">0</field>
             <field name="header_line" eval="False" />
@@ -77,7 +77,7 @@
 <div t-attf-class="header" t-att-style="report_header_style">
             <div class="row">
                 <div class="col-sm col-12" style="text-align:right;">
-                    <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" style="text-align:right;margin-right:-15px;" alt="Logo"/>
+                    <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" style="text-align:right;margin-right:-15px;opacity: 0.15;" alt="Logo"/>
                 </div>
                 <!-- <div class="col-9 text-right" style="margin-top:22px;" name="moto"/> -->
             </div>
