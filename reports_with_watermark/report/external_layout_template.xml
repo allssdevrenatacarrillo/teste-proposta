@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
             </div>
-            <div t-if="company.logo or company.report_header" class="row zero_min_height">
+            <div class="row zero_min_height">
                 <div class="col-12">
                     <div style="border-bottom: 1px solid black;"/>
                 </div>
