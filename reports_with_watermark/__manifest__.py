@@ -25,6 +25,7 @@
         #view
         'views/res_company_views.xml',
         'views/sale_order_custom.xml',
+        'report/template_contract_allss.xml',
 
         #report
         'report/external_layout_template.xml',

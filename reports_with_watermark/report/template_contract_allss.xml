@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <data>
+        <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
+            <field name="name">ALLSS - Propostas de Vendas</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">52</field>
+            <field name="margin_bottom">35</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">52</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report id="action_allss_custom_sale_order"
+                model="sale.order"
+                report_type="qweb-pdf"
+                file="reports_with_watermark.allss_custom_sale_order"
+                name="reports_with_watermark.allss_custom_sale_order"
+                string="ALLSS - Contrato"/>
+
+        <record id="action_allss_custom_sale_order" model="ir.actions.report">
+            <field name="name">ALLSS - Contrato</field>
+            <field name="paperformat_id" ref="paperformat_allss_custom_sale_order"/>
+            <field name="print_report_name">"proposta-%s-%s.pdf" % (object.name, object.partner_id.name)</field>
+        </record>
+    </data>
+
+    <template id="allss_assets_fonts" name="Assets Fonts for Sale Order" inherit_id="web.report_assets_common">
+        <xpath expr="." position="inside">
+            <link href="/reports_with_watermark/static/src/scss/style.scss" rel="stylesheet" type="text/scss"/>
+        </xpath>
+    </template>
+
+
+    <!-- Substituição da call padrão do Odoo pela call da cotação customizada da KV -->
+    <template id="allss_custom_sale_order" inherit_id="sale.report_saleorder">
+        <xpath expr="/t/t/t" position="replace">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="reports_with_watermark.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
+            </t>    
+        </xpath>
+    </template>
+
+<!-- COTAÇÃO DINÂMICA - KV -->
+<template id="allss_report_sale_order">
+        <t t-call="web.basic_layout">
+            <t t-set="content" t-value="doc.sale_order_template_id.body_html"/>
+            <t t-set="body_html" t-value="doc.render_html(content)"/>
+            <t t-set="date_order" t-value="doc.date_order"/>
+
+            <div t-attf-class="header" t-att-style="report_header_style">
+                <div class="row">
+                    <div class="col-sm col-4">
+                        <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
+                        <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
+                        <!-- <b style="color:#03045e;">
+                        <div class="seq_date_header"><span>MPA012</span></div>
+                        <br></br>
+                        <span>ORDEM DE TREINAMENTO</span>
+                        </b> -->
+                    </div>
+
+                    <!-- <div class="col-sm col-6 text-align:center;margin-top:30px;">
+                        <b style="color:#03045e;">
+                        <span>CONTRATO DE PRESTAÇÃO DE SERVIÇOS</span>
+                        </b>
+                    </div> -->
+
+                    <div class="col-sm col-8" style="">
+                        <div class="logo" style="text-align:right;margin-right:-20px;">
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
+                        </div>
+                    <!-- <p style="position:absolute;z-index:1000;">
+                    Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
+                    </p> -->
+                    </div>
+                </div>
+                    <!-- <p style="position:absolute;z-index:1000;">
+                    Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
+                    </p> -->
+            </div>
+
+            <div class="row">
+                <div class="col-sm col-1">
+                </div>
+                <div class="col-sm col-10">
+                    <div class="page" style="">
+                        <div t-raw="body_html"></div>
+                    </div>
+                </div>
+                <div class="col-sm col-1">
+                </div>
+            </div>
+
+             <div class="footer" style="">
+                <div class="row">
+                <div class="col-sm col-4" style="padding:0px!important;">
+                    <div class="logo" style="text-align:left;margin-left:-15px;opacity: 0.50;">
+                        <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width="" style="position:absolute;z-index:1000;"/>
+                    </div>
+                </div>
+
+                <div class="col-sm col-4 text-left" style="padding:0px!important;">
+                    Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
+                    <br></br><span t-field="doc.name"></span>
+                </div>
+
+                <div class="col-sm col-4" style="padding:0px!important;">
+                    <div class="logo" style="text-align:right;margin-right:-15px;opacity: 0.50;">
+                        <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width="" style=""/>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </t>
+</template>
+</odoo>
