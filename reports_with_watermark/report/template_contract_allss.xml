@@ -93,6 +93,10 @@
                 <div class="col-sm col-1">
                 </div>
             </div>
+            
+                <div class="col-sm col-4 text-left" style="font-size:12px;">
+                    Página <b><span class="page"/> de <span class="topage"/></b> - <span t-field="doc.partner_id.name" style=""></span> - <span t-field="doc.name"></span>
+                </div>
 
              <div class="footer" style="">
                 <div class="row">
