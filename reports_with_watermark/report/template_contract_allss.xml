@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
  <data>
-        <record id="paperformat_allss_custom_sale_order" model="report.paperformat">
+        <record id="paperformat_allss_custom_sale_order_contract" model="report.paperformat">
             <field name="name">ALLSS - Propostas de Vendas</field>
             <field name="default" eval="True" />
             <field name="format">A4</field>
@@ -22,11 +22,11 @@
                 name="reports_with_watermark.allss_custom_sale_order_contract"
                 string="ALLSS - Contrato"/>
 
-        <!-- <record id="action_allss_custom_sale_order_contract" model="ir.actions.report">
+        <record id="action_allss_custom_sale_order_contract" model="ir.actions.report">
             <field name="name">ALLSS - Contrato</field>
             <field name="paperformat_id" ref="paperformat_allss_custom_sale_order_contract"/>
             <field name="print_report_name">"proposta-%s-%s.pdf" % (object.name, object.partner_id.name)</field>
-        </record> -->
+        </record>
     </data>
 
     <template id="allss_custom_sale_order_contract">
@@ -45,7 +45,7 @@
 
 <!-- COTAÇÃO DINÂMICA - KV -->
 <template id="allss_report_sale_order_contract">
-        <t t-call="web.basic_layout">
+        <!-- <t t-call="web.basic_layout"> -->
             <t t-set="content" t-value="doc.sale_order_template_id.contract_html"/>
             <t t-set="body_html" t-value="doc.render_html(content)"/>
             <t t-set="date_order" t-value="doc.date_order"/>
