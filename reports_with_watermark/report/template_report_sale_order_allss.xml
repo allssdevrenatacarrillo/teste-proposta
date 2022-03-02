@@ -79,7 +79,11 @@
                 </div>
                 <div class="col-sm col-10">
                     <div class="page" style="">
-                        <div t-raw="body_html"></div>
+                        <div t-raw="body_html">
+                <div style="opacity: 0.25;">
+                    <img t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
+                </div>
+                        </div>
                     </div>
 
                 </div>
