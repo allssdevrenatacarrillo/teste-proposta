@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'ALLSS - WATERMARK - QUOTATION',
+    'name': 'ALLSS - QUOTATION and CONTRACT',
     'version': '14.0.1.0.0',
     'licence':'AGPL-3',
     'category': 'Sale',
