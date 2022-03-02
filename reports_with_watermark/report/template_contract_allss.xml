@@ -15,38 +15,36 @@
             <field name="dpi">90</field>
         </record>
 
-        <report id="action_allss_custom_sale_order"
+        <report id="action_allss_custom_sale_order_contract"
                 model="sale.order"
                 report_type="qweb-pdf"
-                file="reports_with_watermark.allss_custom_sale_order"
-                name="reports_with_watermark.allss_custom_sale_order"
+                file="reports_with_watermark.allss_custom_sale_order_contract"
+                name="reports_with_watermark.allss_custom_sale_order_contract"
                 string="ALLSS - Contrato"/>
 
-        <record id="action_allss_custom_sale_order" model="ir.actions.report">
+        <record id="action_allss_custom_sale_order_contract" model="ir.actions.report">
             <field name="name">ALLSS - Contrato</field>
-            <field name="paperformat_id" ref="paperformat_allss_custom_sale_order"/>
+            <field name="paperformat_id" ref="paperformat_allss_custom_sale_order_contract"/>
             <field name="print_report_name">"proposta-%s-%s.pdf" % (object.name, object.partner_id.name)</field>
         </record>
     </data>
 
-    <template id="allss_assets_fonts" name="Assets Fonts for Sale Order" inherit_id="web.report_assets_common">
+    <template id="allss_custom_sale_order_contract">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="reports_with_watermark.allss_report_sale_order_contract" t-lang="doc.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="allss_assets_fonts_contract" name="Assets Fonts for Sale Contract" inherit_id="web.report_assets_common">
         <xpath expr="." position="inside">
             <link href="/reports_with_watermark/static/src/scss/style.scss" rel="stylesheet" type="text/scss"/>
         </xpath>
     </template>
 
-
-    <!-- Substituição da call padrão do Odoo pela call da cotação customizada da KV -->
-    <template id="allss_custom_sale_order" inherit_id="sale.report_saleorder">
-        <xpath expr="/t/t/t" position="replace">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="reports_with_watermark.allss_report_sale_order" t-lang="doc.partner_id.lang"/>
-            </t>    
-        </xpath>
-    </template>
-
 <!-- COTAÇÃO DINÂMICA - KV -->
-<template id="allss_report_sale_order">
+<template id="allss_report_sale_order_contract">
         <t t-call="web.basic_layout">
             <t t-set="content" t-value="doc.sale_order_template_id.body_html"/>
             <t t-set="body_html" t-value="doc.render_html(content)"/>
