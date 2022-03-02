@@ -104,11 +104,11 @@
                 </div>
 
                 <div class="col-sm col-5 text-left" style="font-size:12px;margin-top:135px;">
-                    Página <b><span class="page"/> de <span class="topage"/></b> - <span style="font-size:10px;">CONTRATO DE PRESTAÇÃO DE SERVIÇOS</span> - <span t-field="doc.name"></span>
+                    PÁGINA <b><span class="page"/> DE <span class="topage"/></b> - <span style="font-size:10px;">CONTRATO DE PRESTAÇÃO DE SERVIÇOS</span> - <span t-field="doc.name"></span>
                 </div>
 
                 <div class="col-sm col-6" style="">
-                    <div class="logo" style="text-align:right;margin-right:-120px;opacity: 0.50;">
+                    <div class="logo" style="text-align:right;margin-right:-110px;opacity: 0.50;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width="" style=""/>
                     </div>
                 </div>
