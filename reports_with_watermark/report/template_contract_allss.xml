@@ -98,12 +98,12 @@
              <div class="footer" style="">
                 <div class="row">
                 <div class="col-sm col-4" style="position:absolute;z-index:-1;">
-                    <div class="logo" style="text-align:left;margin-left:-5px;opacity: 0.50;">
+                    <div class="logo" style="text-align:left;margin-left:-10px;opacity: 0.50;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width="" style=""/>
                     </div>
                 </div>
 
-                <div class="col-sm col-4 text-left" style="font-size:12px;margin-top:30px;">
+                <div class="col-sm col-4 text-left" style="font-size:12px;margin-top:60px;">
                     Página <b><span class="page"/> de <span class="topage"/></b> - <span>CONTRATO DE PRESTAÇÃO DE SERVIÇOS</span> - <span t-field="doc.name"></span>
                 </div>
 
