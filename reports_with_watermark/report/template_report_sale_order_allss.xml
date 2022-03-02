@@ -97,7 +97,7 @@
 
                 <div class="col-sm col-8 text-right" style="font-size:10px;color:#0067B4;">
                     PÁGINA <b><span class="page"/> DE <span class="topage"/></b> - <span style="font-size:12px;">Rua Dr. Jones Bill Munhoz, 686 | Mairinque | SP | +55 11 4708.2660</span>
-                    <br></br
+                    <br></br>
                     <span style="font-size:12px;">allss.com.b</span> - <span t-field="doc.name" style="font-size:12px;"></span>
                 </div>
 
