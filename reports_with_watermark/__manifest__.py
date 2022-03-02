@@ -28,7 +28,7 @@
         'report/template_contract_allss.xml',
 
         #report
-        'report/external_layout_template.xml',
+        'report/template_report_sale_order_allss.xml',
     ],
     'images': [
         'static/description/ALLLSS Soluções em Sistemas.png',
