@@ -63,33 +63,11 @@
             <div t-attf-class="header" t-att-style="report_header_style">
                 <div class="row">
                     <div class="col-sm col-4">
-                        <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
-                        <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
-                        <!-- <b style="color:#03045e;">
-                        <div class="seq_date_header"><span>MPA012</span></div>
-                        <br></br>
-                        <span>ORDEM DE TREINAMENTO</span>
-                        </b> -->
-                    </div>
-
-                    <!-- <div class="col-sm col-6 text-align:center;margin-top:30px;">
-                        <b style="color:#03045e;">
-                        <span>CONTRATO DE PRESTAÇÃO DE SERVIÇOS</span>
-                        </b>
-                    </div> -->
-
-                    <div class="col-sm col-8" style="">
-                        <div class="logo" style="text-align:right;margin-right:-20px;">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
+                        <div class="logo" style="text-align:center;">
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.logo}" width="" style=""/>
                         </div>
-                    <!-- <p style="position:absolute;z-index:1000;">
-                    Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
-                    </p> -->
                     </div>
                 </div>
-                    <!-- <p style="position:absolute;z-index:1000;">
-                    Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
-                    </p> -->
             </div>
 
             <div class="row">
