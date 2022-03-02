@@ -103,7 +103,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm col-6 text-left" style="font-size:12px;margin-top:140px;">
+                <div class="col-sm col-6 text-left" style="font-size:12px;margin-top:130px;">
                     Página <b><span class="page"/> de <span class="topage"/></b> - <span style="font-size:10px;">CONTRATO DE PRESTAÇÃO DE SERVIÇOS</span> - <span t-field="doc.name"></span>
                 </div>
 
