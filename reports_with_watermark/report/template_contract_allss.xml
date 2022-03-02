@@ -102,7 +102,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm col-4 text-left" style="font-size:30px;">
+                <div class="col-sm col-4 text-left" style="font-size:10px;">
                     Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
                     <br></br><span t-field="doc.name"></span>
                 </div>
