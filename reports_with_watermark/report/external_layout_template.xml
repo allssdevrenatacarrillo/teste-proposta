@@ -97,28 +97,28 @@
                 </div>
                 <div class="col-sm col-10">
                     <div class="page" style="">
-                        <div t-raw="body_html"></div>
+                        <div t-raw="contract_html"></div>
                     </div>
+
                 </div>
                 <div class="col-sm col-1">
                 </div>
             </div>
 
-             <div class="footer" style="">
+             <div class="footer" style="margin-top:0px;">
                 <div class="row">
-                <div class="col-sm col-4" style="padding:0px!important;">
+                <div class="col-sm col-1" style="position:absolute;z-index:-1;">
                     <div class="logo" style="text-align:left;margin-left:-15px;opacity: 0.50;">
-                        <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width="" style="position:absolute;z-index:1000;"/>
+                        <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width="" style=""/>
                     </div>
                 </div>
 
-                <div class="col-sm col-4 text-left" style="padding:0px!important;">
-                    Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
-                    <br></br><span t-field="doc.name"></span>
+                <div class="col-sm col-5 text-left" style="font-size:10px;margin-top:135px;">
+                    PÁGINA <b><span class="page"/> DE <span class="topage"/></b> - <span style="font-size:10px;">Proposta de Serviço</span> - <span t-field="doc.name" style="font-size:12px;"></span>
                 </div>
 
-                <div class="col-sm col-4" style="padding:0px!important;">
-                    <div class="logo" style="text-align:right;margin-right:-15px;opacity: 0.50;">
+                <div class="col-sm col-7" style="">
+                    <div class="logo" style="text-align:right;margin-right:-30px;opacity: 0.50;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width="" style=""/>
                     </div>
                 </div>

@@ -23,7 +23,7 @@
                 string="ALLSS - Contrato"/>
 
         <record id="action_allss_custom_sale_order_contract" model="ir.actions.report">
-            <field name="name">ALLSS - Contrato</field>
+            <field name="name">ALLSS - CONTRATO DE PRESTAÇÃO DE SERVIÇOS</field>
             <field name="paperformat_id" ref="paperformat_allss_custom_sale_order_contract"/>
             <field name="print_report_name">"proposta-%s-%s.pdf" % (object.name, object.partner_id.name)</field>
         </record>
