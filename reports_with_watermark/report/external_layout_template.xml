@@ -92,8 +92,22 @@
                     </p> -->
             </div>
 
-            <div class="page" style="">
-                <div t-raw="body_html"></div>
+            <div class="row">
+                <div class="col-sm col-2">
+                    <!-- <div class="page" style="">
+                        <div t-raw="body_html"></div>
+                    </div> -->
+                </div>
+                <div class="col-sm col-8">
+                    <div class="page" style="">
+                        <div t-raw="body_html"></div>
+                    </div>
+                </div>
+                <div class="col-sm col-2">
+                    <!-- <div class="page" style="">
+                        <div t-raw="body_html"></div>
+                    </div> -->
+                </div>
             </div>
 
              <div class="footer" style="">
