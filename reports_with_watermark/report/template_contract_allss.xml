@@ -89,18 +89,15 @@
                     <div class="page" style="">
                         <div t-raw="contract_html"></div>
                     </div>
-                <h5>
-                    Página <b><span class="page"/> de <span class="topage"/></b> - <span t-field="doc.partner_id.name" style=""></span> - <span t-field="doc.name"></span>
-                </h5>
-                
+
                 </div>
                 <div class="col-sm col-1">
                 </div>
             </div>
 
-             <div class="footer" style="position:absolute;">
+             <div class="footer" style="">
                 <div class="row">
-                <div class="col-sm col-4" style="padding:0px!important;">
+                <div class="col-sm col-4" style="position:absolute;z-index:-1;">
                     <div class="logo" style="text-align:left;margin-left:-15px;opacity: 0.50;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerleft}" width="" style=""/>
                     </div>
@@ -110,7 +107,7 @@
                     Página <b><span class="page"/> de <span class="topage"/></b> - <span t-field="doc.partner_id.name" style=""></span> - <span t-field="doc.name"></span>
                 </div>
 
-                <div class="col-sm col-4" style="padding:0px!important;">
+                <div class="col-sm col-4" style="">
                     <div class="logo" style="text-align:right;margin-right:-15px;opacity: 0.50;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width="" style=""/>
                     </div>
