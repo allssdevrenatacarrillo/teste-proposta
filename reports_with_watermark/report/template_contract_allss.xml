@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-sm col-10">
                     <div class="page" style="">
-                        <div t-raw="body_html"></div>
+                        <div t-raw="contract_html"></div>
                     </div>
                 </div>
                 <div class="col-sm col-1">
