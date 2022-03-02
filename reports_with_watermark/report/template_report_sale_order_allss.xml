@@ -96,7 +96,9 @@
                 </div>
 
                 <div class="col-sm col-8 text-right" style="font-size:10px;color:#0067B4;">
-                    PÁGINA <b><span class="page"/> DE <span class="topage"/></b> - <span style="font-size:10px;">Rua Dr. Jones Bill Munhoz, 686 | Mairinque | SP | +55 11 4708.2660 allss.com.b</span> - <span t-field="doc.name" style="font-size:12px;"></span>
+                    PÁGINA <b><span class="page"/> DE <span class="topage"/></b> - <span style="font-size:12px;">Rua Dr. Jones Bill Munhoz, 686 | Mairinque | SP | +55 11 4708.2660</span>
+                    <br></br
+                    <span style="font-size:12px;">allss.com.b</span> - <span t-field="doc.name" style="font-size:12px;"></span>
                 </div>
 
                 <div class="col-sm col-2" style="">
@@ -109,61 +111,8 @@
         </t>
 </template>
 
-
-
-
-<!-- INHERIT NO HEADER E FOOTER -->
-<!-- <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
-    <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="after">
-        <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
-            <div class="row">
-                <div class="col-3 mb4" style="text-align:right">
-                    <img t-if="company.upload_image" t-att-src="image_data_uri(company.upload_image)" style="max-height: 45px;" alt="Logo"/>
-                </div>
-                <div class="col-9 text-right" style="margin-top:22px;" t-field="company.report_header" name="moto"/>
-            </div>
-            <div t-if="company.logo or company.report_header" class="row zero_min_height">
-                <div class="col-12">
-                    <div style="border-bottom: 1px solid black;"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6" name="company_address">
-                    <div t-field="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
-                </div>
-            </div>
-        </div>
-
-        <div t-attf-class="article o_report_layout_standard o_company_#{company.id}_layout" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
-            <div class="pt-5">
-                <t t-call="web.address_layout"/>
-            </div>
-            <t t-raw="0"/>
-        </div>
-
-        <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
-            <div class="text-center" style="border-top: 1px solid black;">
-                <ul class="list-inline mb4">
-                    <li t-if="company.phone" class="list-inline-item d-inline"><span class="o_force_ltr" t-field="company.phone"/></li>
-                    <li t-if="company.email" class="list-inline-item d-inline"><span t-field="company.email"/></li>
-                    <li t-if="company.website" class="list-inline-item d-inline"><span t-field="company.website"/></li>
-                    <li t-if="company.vat" class="list-inline-item d-inline"><t t-esc="company.country_id.vat_label or 'Tax ID'"/>: <span t-field="company.vat"/></li>
-                </ul>
-
-                <div name="financial_infos">
-                    <span t-field="company.report_footer"/>
-                </div>
-
-                <div t-if="report_type == 'pdf'" class="text-muted">
-                    Page: <span class="page"/> / <span class="topage"/>
-                </div>
-            </div>
-        </div>
-    </xpath>
-</template> -->
-
 <!-- WATERMAERK PÁGINA COMO UM TODO -->
-    <!-- <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
+    <template id="report_sale_order_inherit_res_company" inherit_id="web.external_layout_standard">
         <xpath expr="//div[@t-attf-class='article o_report_layout_standard o_company_#{company.id}_layout']" position="inside">
                 <div t-if ="company.watermark_option == 'backgroundimage'" style="opacity: 0.25;">
                     <img t-if="company.upload_image" t-att-src="'data:image/png;base64,%s' % to_text(company.upload_image)" style="top:0px;position:absolute;width:100%; opacity: 0.50;height:auto;"/>
@@ -196,5 +145,5 @@
                     </t>
                 </div>
         </xpath>
-    </template> -->
+    </template>
 </odoo>
