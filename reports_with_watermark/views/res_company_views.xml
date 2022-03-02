@@ -33,7 +33,7 @@
                     </group>
                     <group string="Textos">
                         <field name="body_html"/>
-                        <field name="contract_html" invisible="1"/>
+                        <field name="contract_html" invisible="0"/>
                     </group>
                 </page>
             </xpath>
