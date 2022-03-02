@@ -65,11 +65,11 @@
                     <div class="col-sm col-8">
                         <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
                         <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
-                        <b style="color:#03045e;">
+                        <!-- <b style="color:#03045e;">
                         <div class="seq_date_header"><span>MPA012</span></div>
                         <br></br>
                         <span>ORDEM DE TREINAMENTO</span>
-                        </b>
+                        </b> -->
                     </div>
 
                     <div class="col-sm col-4" style="">
@@ -81,9 +81,9 @@
                     </p> -->
                     </div>
                 </div>
-                    <p style="position:absolute;z-index:1000;">
+                    <!-- <p style="position:absolute;z-index:1000;">
                     Pág. <b><span class="page"/>/<span class="topage"/> <span t-field="doc.partner_id.name" style=""></span></b>
-                    </p>
+                    </p> -->
             </div>
 
             <div class="page" style="">
