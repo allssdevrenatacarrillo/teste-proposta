@@ -7,8 +7,8 @@
     'author': 'ALLSS Soluções em Sistemas',
     'company': 'ALLSS Soluções em Sistemas',
     'website': 'https://allss.com.br',
-    'summary': 'Dynamic Sale Order Quotation - ALLSS Soluções em Sistemas',
-    'description':'Dynamic Sale Order Quotation - by ALLSS Soluções em Sistemas',
+    'summary': 'Dynamic Sale Order Quotation and Contract - ALLSS Soluções em Sistemas',
+    'description':'Dynamic Sale Order Quotation and Contract- by ALLSS Soluções em Sistemas',
     'contributors': [
         'Nathan Oliveira (nathan.oliveira@allss.com.br)',
         'Anderson Coelho (anderson.coelho@allss.com.br)',
