@@ -70,11 +70,9 @@
 <div t-attf-class="header" t-att-style="report_header_style">
                 <div class="row">
                     <div class="col-sm col-4">
-                <t t-if="subst_needed">
-                <div class="first-page col-sm col-5 text-left" style="font-size:10px;">
+                <div class="col-sm col-5 text-left" style="font-size:10px;">
                     PÁGINA <b><span class="page"/> DE <span class="topage"/></b> - <span style="font-size:10px;">PROPOSTA DE SERVIÇOS</span> - <span t-field="doc.partner_id.name" style="font-size:12px;"></span> - <span t-field="doc.name" style="font-size:12px;"></span>
                 </div>
-                </t>
                         <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
                         <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
                         <!-- <b style="color:#03045e;">
@@ -82,11 +80,6 @@
                         <br></br>
                         <span>ORDEM DE TREINAMENTO</span>
                         </b> -->
-                        <t t-if="o._table=='account_invoice'">
-                            <div class="not-first-page">
-                             <span t-esc="o.number"/>
-                             </div>
-                        </t>
                     </div>
 
                     <!-- <div class="col-sm col-6 text-align:center;margin-top:30px;">
