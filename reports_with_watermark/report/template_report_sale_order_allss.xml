@@ -59,16 +59,6 @@
             <t t-set="content" t-value="doc.sale_order_template_id.body_html"/>
             <t t-set="body_html" t-value="doc.render_html(content)"/>
             <t t-set="date_order" t-value="doc.date_order"/>
-<t t-if="o._table=='account_invoice'">
-     <div class="not-first-page">
-         <span t-esc="o.number"/>
-     </div>
- </t>
- <t t-if="o._table=='sale_order'">
-     <div class="not-last-page">
-         <span t-esc="o.name"/>
-     </div>
- </t>
 <div t-attf-class="header" t-att-style="report_header_style">
                 <div class="row">
                     <div class="col-sm col-4">
