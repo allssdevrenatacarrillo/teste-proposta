@@ -53,6 +53,14 @@
         </xpath>
     </template>
 
+<template id="allss_report_sale_order_first_page">
+    <t t-call="web.external_layout">
+        <div class="not-first-page">
+            <span t-esc="o.number"/>
+        </div>
+    </t>
+</template>
+
 <!-- COTAÇÃO DINÂMICA - KV -->
 <template id="allss_report_sale_order">
         <t t-call="web.basic_layout">
