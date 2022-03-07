@@ -127,7 +127,7 @@
         </t>
 </template>
 
-<template inherit_id="external_layout_header">
+<template id="report_sale_order_inherit_header" inherit_id="external_layout_header">
 <t t-if="o._table=='account_invoice'">
      <div class="not-first-page">
          <span t-esc="o.number"/>
