@@ -77,6 +77,11 @@
                         <br></br>
                         <span>ORDEM DE TREINAMENTO</span>
                         </b> -->
+                        <t t-if="o._table=='account_invoice'">
+                            <div class="not-first-page">
+                             <span t-esc="o.number"/>
+                             </div>
+                        </t>
                     </div>
 
                     <!-- <div class="col-sm col-6 text-align:center;margin-top:30px;">
@@ -86,7 +91,7 @@
                     </div> -->
 
                     <div class="col-sm col-8" style="">
-                        <div class="first-page" style="text-align:right;margin-right:-20px;">
+                        <div class="logo" style="text-align:right;margin-right:-20px;">
                             <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
                         </div>
                     <!-- <p style="position:absolute;z-index:1000;">
