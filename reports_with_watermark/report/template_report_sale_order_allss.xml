@@ -70,6 +70,7 @@
 <div t-attf-class="header" t-att-style="report_header_style">
                 <div class="row">
                     <div class="col-sm col-4">
+                    <span t-esc="o.number"/>
                         <!-- <span t-set="date_order" t-value="'doc.date_order.strftime('%d/%m/%Y')"/> -->
                         <!-- <div class="seq_date_header"><span>Proposta <span t-field="doc.name"></span> - <span t-field="doc.date_order"></span></span></div> -->
                         <!-- <b style="color:#03045e;">
