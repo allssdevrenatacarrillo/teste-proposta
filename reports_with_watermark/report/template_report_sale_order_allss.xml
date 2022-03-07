@@ -54,7 +54,7 @@
     </template>
 
 <template id="allss_report_sale_order_first_page">
-    <t t-call="web.external_layout">
+    <t t-call="web.basic_layout">
         <div class="first-page">
             <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
         </div>
