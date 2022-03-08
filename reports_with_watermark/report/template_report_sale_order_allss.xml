@@ -104,7 +104,15 @@
                 </div>
                 <div class="col-sm col-10">
                     <div class="page" style="">
-                        <div t-raw="body_html"></div>
+                        <div class="" style="text-align:center;">
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
+                        </div>
+
+                        <div t-raw="body_html">
+                                                <div class="" style="text-align:center;">
+                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
+                        </div>
+                        </div>
                     </div>
 
                 </div>
@@ -124,11 +132,7 @@
                     PÁGINA <b><span class="page"/> DE <span class="topage"/></b> - <span style="font-size:10px;">PROPOSTA DE SERVIÇOS</span> - <span t-field="doc.partner_id.name" style="font-size:12px;"></span> - <span t-field="doc.name" style="font-size:12px;"></span>
                 </div>
 
-                <div class="col-sm col-1" style="text-align:center;">
-                    <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
-                 </div>
-
-                <div class="col-sm col-6" style="">
+                <div class="col-sm col-7" style="">
                     <div class="logo" style="text-align:right;margin-right:-30px;opacity: 0.50;">
                         <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.footerright}" width="" style=""/>
                     </div>
