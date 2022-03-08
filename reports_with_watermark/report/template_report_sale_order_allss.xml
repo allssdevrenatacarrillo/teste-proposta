@@ -23,7 +23,7 @@
                 string="ALLSS - Propostas de Vendas"/>
 
         <record id="action_allss_custom_sale_order" model="ir.actions.report">
-            <field name="name">ALLSS - PROPOSTA DE VENDA</field>
+            <field name="name">ALLSS - PROPOSTA DE VENDASSS</field>
             <field name="paperformat_id" ref="paperformat_allss_custom_sale_order"/>
             <field name="print_report_name">"proposta-%s-%s.pdf" % (object.name, object.partner_id.name)</field>
         </record>
