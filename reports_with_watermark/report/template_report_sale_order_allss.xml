@@ -100,24 +100,13 @@
             </div>
 
             <div class="row">
-                <div class="col-sm col-1">
-                </div>
+                <div class="col-sm col-1"></div>
                 <div class="col-sm col-10">
                     <div class="page" style="">
-                        <div class="" style="text-align:center;">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
-                        </div>
-
-                        <div t-raw="body_html">
-                                                <div class="" style="text-align:center;">
-                            <img  t-attf-src="data:image/png;base64,#{doc.sale_order_template_id.header}" width="" style=""/>
-                        </div>
-                        </div>
+                        <div t-raw="body_html"></div>
                     </div>
-
                 </div>
-                <div class="col-sm col-1">
-                </div>
+                <div class="col-sm col-1"></div>
             </div>
 
              <div class="footer" style="margin-top:0px;">
@@ -129,7 +118,7 @@
                 </div>
 
                 <div class="col-sm col-5 text-left" style="font-size:10px;margin-top:135px;">
-                    PÁGINA <b><span class="page"/> DE <span class="topage"/></b> - <span style="font-size:10px;">PROPOSTA DE SERVIÇOS</span> - <span t-field="doc.partner_id.name" style="font-size:12px;"></span> - <span t-field="doc.name" style="font-size:12px;"></span>
+                    <!-- PÁGINA <b><span class="page"/> DE <span class="topage"/></b> - <span style="font-size:10px;">PROPOSTA DE SERVIÇOS</span> - <span t-field="doc.partner_id.name" style="font-size:12px;"></span> - <span t-field="doc.name" style="font-size:12px;"></span> -->
                 </div>
 
                 <div class="col-sm col-7" style="">
